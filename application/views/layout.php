@@ -5,11 +5,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  <html lang="es">
      <head>
          <meta charset="utf-8">
-         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
          <title>Politiqueo</title>
          <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
          <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
          <link rel="stylesheet" href="<?php echo base_url()?>css/style-layout.css">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
      </head>
      <body>
         <header>

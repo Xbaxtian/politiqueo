@@ -1,3 +1,4 @@
+/****PLANTILLA****/
 html {
   min-height: 100%;
   position: relative;
@@ -7,7 +8,7 @@ body{
     font-family: 'Inconsolata', monospace;
     padding: 0;
     margin: 0;
-    margin-bottom: 94px;
+    margin-bottom: 76px;
 }
 
 header{
@@ -32,17 +33,34 @@ footer{
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 94px;
+    height: 76px;
     background-color: black;
     color: #FFFFFF;
-    padding: 28px 15px 10px 15px;
-}
-
-#main-content{
-    /*min-height: 80vh;*/
+    padding: 10px 15px 10px 15px;
 }
 
 .developed{
     text-align: center;
     font-size: 12px;
 }
+/********/
+/****HOME****/
+.section-principal .container{
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.tarjeta{
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.imagen{
+    height: 126px;
+    width: auto;
+}
+/********/

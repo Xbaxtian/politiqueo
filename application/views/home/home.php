@@ -1,10 +1,34 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
- ?>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            HOME
+?>
+
+<section class="section-principal">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="tarjeta congreso col-md-3">
+                <img src="<?php base_url()?>img/home/municipalidad.png" alt="Congreso del peru" class="imagen">
+                <h3>Congreso</h3>
+            </div>
+            <div class="tarjeta ministerio col-md-3">
+                <img src="<?php base_url()?>img/home/municipalidad.png" alt="Ministerios del peru" class="imagen">
+                <h3>Ministerios</h3>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="tarjeta alcaldias col-md-3">
+                <img src="<?php base_url()?>img/home/municipalidad.png" alt="Alcaldias del peru" class="imagen">
+                <h3>Alcaldias</h3>
+            </div>
+            <div class="tarjeta col-md-3"></div>
         </div>
     </div>
-</div>
+</section>
+
+<script>
+    $('.congreso').mouseover(function(){
+        $('.section-principal .container').css("background-image", "url(<?php base_url()?>img/home/congreso.jpg)")
+    });
+    $('.congreso').mouseout(function(){
+        $('.section-principal .container').css("background-image", "none")
+    });
+</script>
