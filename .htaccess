@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /
+    #RewriteBase /
 
     #Removes access to the system folder by users.
     #Additionally this will allow you to create a System.php controller,
@@ -13,7 +13,7 @@
     #This snippet prevents user access to the application folder
     #Submitted by: Fabdrol
     #Rename 'application' to your applications folder name.
-    RewriteCond %{REQUEST_URI} ^application.*
+    RewriteCond %{REQUEST_URI} ^politiqueo.*
     RewriteRule ^(.*)$ /index.php?/$1 [L]
 
     #Checks to see if the user is attempting to access a valid file,
