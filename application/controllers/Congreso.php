@@ -14,7 +14,10 @@ class Congreso extends CI_Controller{
         $this->load->view('layout',$data);
     }
 
-
+    public function congresistas(){
+        $data = array("content"=>'congreso/congresistas',"dataView"=>array("partido"=>"PPK"));
+        $this->load->view('layout',$data);
+    }
 
 }
 

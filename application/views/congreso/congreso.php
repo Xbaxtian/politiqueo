@@ -17,14 +17,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <div class="row justify-content-center">
 
                         <div class="col-md-3 col-sm-6 col-12 tarjeta">
-
+                            <a href="<?php echo base_url()?>congreso/congresistas/?bancada='idbasncada'">
                               <figure class="figure">
                                   <img class="img-fluid rounded" src="<?php echo base_url(); ?>img/congreso/keiko_opt.png" alt="">
                                   <figcaption class="figure-caption">
                                     <h5 class="text-center">Fuerza</br> Popular</h5>
                                   </figcaption>
                                 </figure>
-
+                            </a>
                         </div>
 
                         <div class="col-md-3  col-sm-6 col-12 align-self-center tarjeta">

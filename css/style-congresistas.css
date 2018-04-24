@@ -1,0 +1,11 @@
+.celda{
+    /*display: inline-block;*/
+}
+
+.celda-foto{
+    vertical-align: middle;
+}
+
+.celda-nombre{
+    vertical-align: middle;
+}
