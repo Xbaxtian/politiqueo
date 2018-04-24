@@ -31,5 +31,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $('.congreso').mouseout(function(){
         $('.section-principal .container').css("background-image", "none")
     });
-    $('.congreso').
+    $('.congreso').z
 </script>
