@@ -113,4 +113,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </div>
           </div>
       </div>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>

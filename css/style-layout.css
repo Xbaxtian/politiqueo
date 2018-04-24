@@ -59,8 +59,18 @@ footer{
     margin-top: 10px;
     margin-bottom: 10px;
 }
+.tarjeta h3{
+    color: black;
+}
 .imagen{
     height: 126px;
     width: auto;
+}
+.tarjeta {
+    color: black;
+}
+.tarjeta :hover{
+    color: black;
+    text-decoration: none;
 }
 /********/
