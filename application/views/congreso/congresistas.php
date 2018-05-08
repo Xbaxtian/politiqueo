@@ -11,9 +11,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="row justify-content-center">
             <div class="col-md-5">
                 <div class="celda row">
-                    <div class="celda-foto col-md-4" align="center">
-                        <img src="<?php echo base_url()?>img/congreso/congresistas/fotaso.png" height="150px" width="150">
-                    </div>
+                    <figure class="figure">
+                        <img src="<?php echo base_url()?>img/congreso/congresistas/fotaso.png">
+                    </figure>
                     <div class="celda-nombre col-md-8" align='center'>
                         <h3>Erick Rafael Camilo Taipe Carrion</h3>
                     </div>
@@ -21,9 +21,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class="col-md-5 offset-md-1">
                 <div class="celda row">
-                    <div class="celda-foto col-md-4" align="center">
+                    <figure class="figure">
                         <img src="<?php echo base_url()?>img/congreso/congresistas/fotaso.png">
-                    </div>
+                    </figure>
                     <div class="celda-nombre col-md-8" align='center'>
                         <h3>Erick Rafael Camilo Taipe Carrion</h3>
                     </div>

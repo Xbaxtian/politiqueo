@@ -4,11 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <link rel="stylesheet" type = "text/css" href = "<?php echo base_url(); ?>css/style-congreso.css">
     <div class="container">
-        <div class="row main justify-content-center">
+        <div class="row justify-content-center">
 
             <div class="col-md-8">
 
-                  <div class="row title">
+                  <div class="row sec-titulo">
                       <div class="col-md-2 col-sm-12 text-center">
                           <h1><b>Congreso</b></h1>
                       </div>

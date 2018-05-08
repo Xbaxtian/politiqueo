@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          <link rel="stylesheet" href="<?php echo base_url()?>css/style-layout.css">
      </head>
      <body>
-         <script src="js/libraries/jquery-3.3.1.min.js"></script>
+         <script src="<?php echo base_url()?>js/libraries/jquery-3.3.1.min.js"></script>
         <header>
             <div class="container-fluid">
                 <div class="row">
