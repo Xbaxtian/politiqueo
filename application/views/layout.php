@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
- ?>
+if($this->session->userdata('id_usuario')){
+    $this->session->sess_destroy();
+}
+?>
  <!DOCTYPE html>
  <html lang="es">
      <head>

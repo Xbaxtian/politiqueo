@@ -47,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </form>
             </div>
         </div>
-        <h2>Fromacion academica</h2>
+        <h2>Formación academica</h2>
         <hr>
         <h2>Historial de cargos públicos</h2>
         <hr>

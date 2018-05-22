@@ -16,17 +16,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4 card">
-                <form id="login" class="card-body">
+                <?php $atributos = array('class' => 'card-body', 'id' => 'login');
+                echo form_open(base_url()."Login/acceso",$atributos);?>
                     <div class="form-group">
                     <label>Email</label>
-                    <input type="text" class="form-control" placeholder="Email">
+                    <?php $email = array('type'=>'email','name'=> 'email','placeholder'=>'Email','class'=>'form-control');
+                    echo form_input($email); ?>
                     </div>
                     <div class="form-group">
                     <label>Password</label>
-                    <input type="password" class="form-control" placeholder="Password">
+                    <?php $pass = array('type'=>'password','name'=> 'pass','placeholder'=>'Password','class'=>'form-control');
+                    echo form_input($pass); ?>
                     </div>
-                    <button type="submit" class="btn btn-peru btn-block">Iniciar Sesion</button>
-                </form>
+                    <?php $submit = array('type'=>'submit','class'=>'btn btn-peru btn-block','value'=>'Iniciar Sesion');
+                    echo form_submit($submit); ?>
+                <?php echo form_close(); ?>
             </div>
         </div>
     </div>
