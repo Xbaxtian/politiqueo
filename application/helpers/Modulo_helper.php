@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-function getModulo($id_rol){
+function getModulo($id_rol){ // vistas
     $CI =& get_instance();
     $CI->db->select('*');
     $CI->db->from('modulos m');
@@ -11,7 +11,7 @@ function getModulo($id_rol){
     return $query->result_array();
 }
 
-function getModulos(){
+function getModulos(){ // registros
     $CI =& get_instance();
     $query = $CI->db->query("select * from modulos");
     return $query->result_array();

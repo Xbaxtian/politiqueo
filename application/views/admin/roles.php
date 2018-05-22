@@ -18,16 +18,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <?php if( ( $i % 2) == 1 ){ ?>
       </div>
       <?php } } ?>
-      <div class="row">
-          <div class="col-md-12">
-              <button class="btn main-color-bg offset-10" data-toggle="modal" data-target="#addRol" >Añadir Rol</button>
+      <div class="row justify-content-between offset-md-1">
+          <div class="col-md-3">
+              <button class="btn main-color-bg">Editar Rol</button>
+          </div>
+          <div class="col-md-3">
+              <button class="btn main-color-bg">Eliminar Rol</button>
+          </div>
+          <div class="col-md-3">
+              <button class="btn main-color-bg" data-toggle="modal" data-target="#addRol" >Añadir Rol</button>
           </div>
       </div>
 </div>
       <div class="modal fade" id="addRol" tabindex="-1" role="dialog" aria-labelledby="addUser">
           <div class="modal-dialog" role="document">
               <div class="modal-content">
-                 <?php echo form_open(base_url()."admin/recibirdatos_rol"); ?>
+                 <?php echo form_open(base_url()."rol/recibirdatos"); ?>
                       <div class="modal-header">
                           <h4 class="modal-title" id="myModalLabel">Añadir Rol</h4>
                           <button type="button" class="btn close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

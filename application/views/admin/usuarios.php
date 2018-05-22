@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="addUser">
           <div class="modal-dialog" role="document">
               <div class="modal-content">
-                 <?php echo form_open(base_url().'admin/recibirdatos_usuario'); ?>
+                 <?php echo form_open(base_url().'usuarios/recibirdatos_usuario'); ?>
                       <div class="modal-header">
                           <h4 class="modal-title" id="myModalLabel">Añadir Usuario</h4>
                           <button type="button" class="btn close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -107,12 +107,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       </div>
                       <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                          <a href="<?php echo base_url()."Administrador/usuarios";?>">
                           <?php
                           $submit = array('type'=>'submit','value'=>'Guardar','class'=>'btn main-color-bg');
                           echo form_submit($submit);
                           ?>
-                          </a>
                       </div>
                   <?php echo form_close(); ?>
               </div>

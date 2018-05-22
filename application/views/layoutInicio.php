@@ -18,6 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          <script src="<?php echo base_url()?>js/libraries/jquery-3.3.1.min.js"></script>
          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
          <script src="https://unpkg.com/ionicons@4.1.2/dist/ionicons.js"></script>
+
          <nav class="navbar navbar-default navbar-expand">
                  <div class="container">
                      <div class="navbar-header">
@@ -67,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                              ?>
                              <a href="<?php echo base_url()."admin"; ?>" class="list-group-item main-color-bg">Administración</a>
                              <?php for ($i=0; $i < count($modulos); $i++){ ?>
-                             <a href="<?php echo base_url()."admin/"."mod".$modulos[$i]['id_modulo']; ?>" class="list-group-item d-flex justify-content-between align-items-center item"><?php echo $modulos[$i]['nombre'];?>
+                             <a href="<?php echo base_url().$modulos[$i]['direccion']; ?>" class="list-group-item d-flex justify-content-between align-items-center item"><?php echo $modulos[$i]['nombre'];?>
                              <?php if($modulos[$i]['id_modulo'] < 3) {?><span class="badge main-color-bg"><?php echo $badge[$i]; ?></span> <?php } ?></a>
                          <?php } ?>
                         </div>
@@ -78,10 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                  </div>
              </div>
         </section>
-
-   <!-- <div id="main-content">
-             <? // php $this->load->view($content,$dataView); ?>
-        </div> -->
+        
         <footer>
             <div class="container-fluid">
                 <div class="row">
