@@ -1,5 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+if(!$this->session->userdata('id_usuario')){
+    redirect('login');
+}
  ?>
 
  <!DOCTYPE html>
