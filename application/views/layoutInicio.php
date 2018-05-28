@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                  <div class="container">
                      <div class="navbar-header">
                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false"></button>
-                     <a class="navbar-brand" href="<?php echo base_url(); ?>">POLITIQUEO</a>
+                       <h1><a class="home-link" href="<?php echo base_url(); ?>">POLITIQUEO</a></h1>
                      </div>
                      <div class="collapse navbar-collapse navbar" id="navbar">
                            <ul class="navbar-nav">
