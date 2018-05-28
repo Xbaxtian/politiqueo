@@ -5,7 +5,7 @@ class Login extends CI_Controller{
 
     public function __constuct(){
         parent:: __constuct();
-        
+
     }
 
     public function index(){
@@ -20,7 +20,6 @@ class Login extends CI_Controller{
         $resultado = $this->loginModel->getUsuario($data);
         $resultado = $resultado[0];
         if($resultado != false){
-            print_r($resultado);
             $this->session->set_userdata($resultado);
             redirect('admin');
         }

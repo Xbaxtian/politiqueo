@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
- ?>
+?>
 
  <!DOCTYPE html>
  <html lang="es">
@@ -27,15 +27,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                      </div>
                      <div class="collapse navbar-collapse navbar" id="navbar">
                            <ul class="navbar-nav">
-                    <!--           <li class="nav-item">
-                                  <a class="nav-link" href="#">Añadir Organización</a>
-                               </li>
-                               <li class="nav-item">
-                                   <a class="nav-link" href="#">Añadir Partido</a>
-                               </li>
-                               <li class="nav-item">
-                                   <a class="nav-link" href="#">Añadir Político</a>
-                               </li>  -->
                            </ul>
                            <ul class="nav navbar-nav navbar-right">
                                <li class="nav-item">
@@ -52,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
              <div class="container-fluid">
                  <div class="row">
                    <div class="col-md-12">
-                       <h1 class="text-center"> Area de Administracion</h1>
+                       <h1 class="text-center"> Área de Administración</h1>
                    </div>
                  </div>
              </div>
@@ -79,7 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                  </div>
              </div>
         </section>
-        
+
         <footer>
             <div class="container-fluid">
                 <div class="row">

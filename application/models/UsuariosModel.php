@@ -13,15 +13,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
         }
 
-        public function usuarioporid($id){ //editarborrar
-            $this->db->select('*');
-            $this->db->from('usuarios');
-            $this->db->where('id_usuario='.$id);
-            $query = $this->db->get();
-            $result = $query->result_array();
-            if(count($result)>0){
-                return $result;
-            }
+        public function borrarusuario($id){ //editarborrar
+            $this->db->delete('usuarios', array('id' => $id));
         }
 
         public function registrarUsuario($data){
@@ -33,6 +26,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     'pass'=>$data['pass'],
                     'correo'=>$data['correo'])
           );
+
+        }
+
+        public function busqueda($txt){
+            $this->db->from('usuarios');
+            $this->db->like('nombres',$txt,'both');
+            $query = $this->db->get();
+            return $query ->result();
 
         }
 

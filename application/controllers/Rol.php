@@ -6,6 +6,11 @@ class Rol extends CI_Controller {
         parent::__construct();
         $this->load->model('rolModel');
         $this->load->helper('Modulo');
+
+		if(!$this->session->userdata('id_usuario')){
+		    $this->session->sess_destroy();
+			redirect('login');
+		}
     }
 
 	public function index()
@@ -24,4 +29,10 @@ class Rol extends CI_Controller {
 	  	$this->rolModel->modulosasignados($data_modulos);
 		redirect('rol');
 	}
+
+	public function borrar()
+    {
+        $id = $this->input->post('idrol');echo $id;
+        $this->rolModel->borrarrol($id);
+    }
 }

@@ -8,7 +8,10 @@ class PartidosModel extends CI_Model{
     }
 
     public function listarTodos(){
-        $query = $this->db->get('partidos'); 
+        $this->db->select('*');
+        $this->db->from('partidos');
+        $this->db->where('estado = 1');
+        $query = $this->db->get();
         return $query->result_array();
     }
 
@@ -16,6 +19,7 @@ class PartidosModel extends CI_Model{
         $this->db->select('*');
         $this->db->from('politicos');
         $this->db->where('id_partido = '.$id_partido);
+        $this->db->where('estado = 1');
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -24,8 +28,15 @@ class PartidosModel extends CI_Model{
         $this->db->select('nombre');
         $this->db->from('partidos');
         $this->db->where('id_partido = '.$id_partido);
+        $this->db->where('estado = 1');
         $query = $this->db->get();
         return $query->result_array();
     }
-    
+
+    public function borrarpartido($id){
+        $this->db->set('estado', 0);
+        $this->db->where('id', $id);
+        $this->db->update('partido'); 
+    }
+
 }
