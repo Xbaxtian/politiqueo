@@ -5,7 +5,12 @@ class Usuarios extends CI_Controller {
 	function __construct(){
         parent::__construct();
         $this->load->model('usuariosModel');
-        $this->load->helper('Modulo');
+        $this->load->helper('modulo');
+
+		if(!$this->session->userdata('id_usuario')){
+		    $this->session->sess_destroy();
+			redirect('login');
+		}
     }
 
 	public function index()
@@ -16,15 +21,21 @@ class Usuarios extends CI_Controller {
 
 	}
 
-	public function usuariosporid() // actualizar borrar
+	public function borrar() // borrar
 	{
-		$id = $this->input->post('id');
-		$resultado = $this->UsuariosModel->usuariosporid($id);
-		$data = array("content"=>'admin/usuarios',"dataView"=>array('resultado' => $resultado));
-		$this->load->view('layoutInicio',$data);
+		$id = $this->input->post('idusuario');
+		$result = $this->usuariosModel->borrarusuario($id);
+		if($result == "success"){
+			redirect("usuarios");
+		}
+		else {
+			header('Content-Type: application/json');
+			echo json_encode(array("result"=>$result));
+		}
 	}
 
-	public function recibirdatos_usuario(){
+	public function recibirdatos()
+	{
 		$data = array(
 	        'id_usuario'=>$this->input->post('id'),
 			'id_rol'=>$this->input->post('rol'),
@@ -36,5 +47,12 @@ class Usuarios extends CI_Controller {
 
 	    $this->usuariosModel->registrarUsuario($data);
 		redirect('usuarios');
+	}
+
+	public function busqueda()
+	{
+		$txt = $this->input->post('texto');
+		$resultado = $this->usuariosModel->busqueda($txt);
+		echo json_encode($resultado);
 	}
 }

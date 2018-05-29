@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="text-center"> Area de Administracion</h1>
+                <h1 class="text-center"> Área de Administración</h1>
             </div>
         </div>
     </div>
