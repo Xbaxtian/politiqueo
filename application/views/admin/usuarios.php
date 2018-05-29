@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-include('modales/musuarios.php');
+//include('modales/musuarios.php');
  ?>
  <div class="col-md-9">
      <div class="main-color-bg">
@@ -36,7 +36,7 @@ include('modales/musuarios.php');
              </table>
              <div class="row">
                  <div class="col-md-12">
-                     <button class="btn main-color-bg float-right" data-toggle="modal" data-target="#addUser" >Añadir Usuario</button>
+                     <button class="btn pop-up main-color-bg float-right" href="usuarios/anadirUsuario" >Añadir Usuario</button>
                  </div>
              </div>
         </div>

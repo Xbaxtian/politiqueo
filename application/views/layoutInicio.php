@@ -85,5 +85,28 @@ if(!$this->session->userdata('id_usuario')){
                 </div>
             </div>
         </footer>
+        <div id="modal-target">
+            <div class="modal fade" id="modal-pop-up" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    </div>
+                </div>
+            </div>
+        </div>
      </body>
  </html>
+
+ <script type="text/javascript">
+     $(document).ready(function(){
+         $(".pop-up").click(function(){
+             var btn = $(this);
+             $.get(btn.attr("href"), function(data){
+                 $("#modal-target .modal-content").html("");
+                 $("#modal-target .modal-content").html(data);
+                 $("#modal-pop-up").modal();
+             }).fail(function(){
+                 alert( "Error de red" );
+             })
+         });
+     })
+ </script>

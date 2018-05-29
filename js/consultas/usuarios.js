@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-        $('#bsq').keyup(function(){
+        /*$('#bsq').keyup(function(){
             var text =  $('#bsq').val();
             var lt = text.length;
             if ( lt > 1 )
@@ -23,7 +23,7 @@ $( document ).ready(function() {
                     $('#bsq tbody').append(output);
                 })
             }
-        })
+        })*/
 
 
         $('#myModal').on('show.bs.modal', function (event) {
