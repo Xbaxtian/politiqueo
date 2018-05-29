@@ -3,6 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     class UsuariosModel extends CI_Model{
 
+        function __construct(){
+            parent::__construct();
+        }
+
         public function listarusuarios(){
             $this->db->select('*');
             $this->db->from('usuarios');
@@ -14,7 +18,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
         public function borrarusuario($id){ //editarborrar
-            $this->db->delete('usuarios', array('id' => $id));
+            try {
+                $this->db->delete('usuarios', array('id_usuario' => $id));
+                return "success";
+            } catch (Exception $e) {
+                return "error";
+            }
         }
 
         public function registrarUsuario($data){

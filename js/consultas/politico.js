@@ -10,19 +10,11 @@ $( document ).ready(function() {
            event.preventDefault();
            var id = $("#idpolitico").attr("value");alert(id);
 
-          $.ajax({
-                 type: "POST",
-                 url: "politico/borrar",
-                 dataType:'json',
-                 data: { idpolitico:id }
-           })
-
-           .done(function(){
-               alert("OK! Político Borrado");
-           })
-           .fail(function(){
-               alert("Error: No se pudo concretar");
-           })
+           $.post("politico/borrar", {"idpolitico": id}, function(data){
+               if(data.result !== "success"){
+                   alert("Error: No se pudo concretar");
+               }
+           });
        })
 
        $('#regpolitico').submit(function(event){

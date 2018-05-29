@@ -20,18 +20,31 @@ class OrganosModel extends CI_Model{
     }
 
     public function registrarorgano($data){
-        $this->db->insert('organos',
-        array('descripcion'=>$data['descripcion'],
-                 'titulo'=>$data['titulo'],
-                 'imagen'=>$data['url'],
-                 'estado'=>1)
-       );
+        try
+        {
+            $this->db->insert('organos',
+            array('descripcion'=>$data['descripcion'],
+                     'titulo'=>$data['titulo'],
+                     'imagen'=>$data['url'],
+                     'estado'=>1)
+           );
+           return "success";
+        }
+        catch(Exception $e){
+            return "error";
+        }
     }
 
     public function borrarorgano($id){
-        $this->db->set('estado', 0);
-        $this->db->where('id', $id);
+    try
+    {    $this->db->set('estado', 0);
+        $this->db->where('id_organo', $id);
         $this->db->update('organos');
+        return "success";
+     }
+     catch(Exception $e){
+         return "error";
+     }
     }
 
 }

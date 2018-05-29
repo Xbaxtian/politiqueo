@@ -33,6 +33,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="form-group row justify-content-center">
                             <div class="row ">
                                 <div class="col-md-9">
+                                    <button id="act" type="submit"class="btn btn-peru">Actualizar</button>
+                                </div>
+                                <div class="col-md-9">
                                     <button id="reg" type="submit"class="btn btn-peru">Registrar</button>
                                 </div>
                             </div>

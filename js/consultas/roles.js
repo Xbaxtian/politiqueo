@@ -36,7 +36,7 @@ $( document ).ready(function() {
        */
        $('#modalrol').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget)
-        var id = button.data('id') 
+        var id = button.data('id')
         var modal = $(this)
         modal.find('#idrol').val(id)
       })
@@ -45,18 +45,10 @@ $( document ).ready(function() {
           event.preventDefault();
           var id = $("#idrol").attr("value");
         //var parametros = $(this).serialize();
-         $.ajax({
-                type: "POST",
-                url: "rol/borrar",
-                  dataType:'json',
-                  data: { idrol:id }
-          })
-
-          .done(function(){
-              alert("OK! Rol Borrado");
-          })
-          .fail(function(){
-              alert("Error: No se pudo concretar");
-          })
+        $.post("rol/borrar", {"idrol": id}, function(data){
+            if(data.result !== "success"){
+                alert("Error: No se pudo concretar");
+            }
+        });
       })
    });

@@ -24,7 +24,14 @@ class Usuarios extends CI_Controller {
 	public function borrar() // borrar
 	{
 		$id = $this->input->post('idusuario');
-		$this->usuariosModel>borrarusuario($id);
+		$result = $this->usuariosModel->borrarusuario($id);
+		if($result == "success"){
+			redirect("usuarios");
+		}
+		else {
+			header('Content-Type: application/json');
+			echo json_encode(array("result"=>$result));
+		}
 	}
 
 	public function recibirdatos()

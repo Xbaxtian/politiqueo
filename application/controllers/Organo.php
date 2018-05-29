@@ -35,14 +35,23 @@ class Organo extends CI_Controller {
 			'url'=>$this->input->post('url'),
 	      );
 
-	    $this->organosModel->registrarorgano($data);
-		redirect('organo');
+	    $result = $this->organosModel->registrarorgano($data);
+        redirect('organo');
+        if($result === "success"){
+
+		}
+		else {
+			header('Content-Type: application/json');
+			echo json_encode(array("result"=>$result));
+
+		}
     }
 
     public function borrar()
     {
         $id = $this->input->post('idorgano');
         $this->organosModel->borrarorgano($id);
+        redirect('organo');
     }
 
 

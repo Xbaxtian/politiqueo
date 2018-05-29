@@ -49,15 +49,15 @@
                                     <div class="col-md-4">
                                       <?php $modulos = getModulos();
                                         for ($i=0; $i < count($modulos); $i++) {
-                                            if(($i % 2) == 0){ ?>
+                                            if(($i % 3) == 0){ ?>
                                                 <div class="btn-group btn-group-toggle offset-md-9" data-toggle="buttons">
                                                 <?php }  ?>
                                                     <label class="btn btn-danger main-color-bg"> <?php echo $modulos[$i]['nombre'];
                                                     $checkbox = array('type'=>'checkbox','name'=> 'modulos[]','id'=>'modulos','value'=>$modulos[$i]['id_modulo']);
                                                     echo form_input($checkbox);
                                                     ?>
-                                                    </label>
-                                            <?php if(($i % 2) == 1){?>
+                                                </label>&nbsp
+                                            <?php if(($i % 3) == 2){?>
                                                  </div> <?php } ?>
                                             <?php } ?>
                                         </div>
@@ -68,18 +68,13 @@
                     <div class="modal-footer">
                         <button type="button" id="act" class="btn btn-default">Actualizar</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                        <a href="<?php echo base_url();?>">
                         <?php
                         $submit = array('type'=>'submit','value'=>'Guardar','class'=>'btn main-color-bg');
                         echo form_submit($submit);
                         ?>
-                        </a>
                     </div>
                 <?php echo form_close(); ?>
             </div>
-            <script type="text/javascript">
-
-            </script>
         </div>
     </div>
 </form>

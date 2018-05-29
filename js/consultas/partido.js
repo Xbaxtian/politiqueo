@@ -10,19 +10,11 @@ $( document ).ready(function() {
            event.preventDefault();
            var id = $("#idpartido").attr("value");
 
-          $.ajax({
-                 type: "POST",
-                 url: "partido/borrar",
-                   dataType:'json',
-                   data: { idpartido:id }
-           })
-
-           .done(function(){
-               alert("OK! Partido Borrado");
-           })
-           .fail(function(){
-               alert("Error: No se pudo concretar");
-           })
+           $.post("partido/borrar", {"idpartido": id}, function(data){
+               if(data.result !== "success"){
+                   alert("Error: No se pudo concretar");
+               }
+           });
        })
 
        $('#regpartido').submit(function(event){

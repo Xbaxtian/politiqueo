@@ -20,7 +20,7 @@ class Rol extends CI_Controller {
 		$this->load->view('layoutInicio',$data);
 	}
 
-	public function recibirdatos() // cambia
+	public function recibirdatos() 
 	{
 		$data_rol = array('descripcion'=>$this->input->post('descripcion'));
 		$this->rolModel->registrarrol($data_rol);

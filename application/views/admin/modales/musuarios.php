@@ -47,19 +47,24 @@
 
                               <label>Rol</label><br>
 
-                          <div class="row">
-                              <div class="col-md-4 justify-content-between">
+                          <div class="row offset-1">
+                              <div class="col-md-4 ">
+                                  <?php
+                                  $roles = getRol();
+                                  for ($i=0; $i < count($roles); $i++) {
+                                      if(($i % 3) == 0){?>
                                  <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                     <?php
-                                     $roles = getRol();
-                                     for ($i=0; $i < count($roles); $i++) { ?>
+                                 <?php } ?>
+
                                      <label class="btn main-color-bg btn-danger">
                                      <?php echo $roles[$i]['descripcion'];
                                          $radiobutton = array('type'=>'radio','name'=> 'rol','value'=>$roles[$i]['id_rol']);
                                          echo form_input($radiobutton);
                                      ?>
-                                     </label> <?php } ?>
+                                    </label>&nbsp&nbsp
+                                    <?php if(($i % 3) == 2){ ?>
                                  </div>
+                             <?php }} ?>
                               </div>
                            </div>
                      </div>

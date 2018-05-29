@@ -9,19 +9,27 @@ $( document ).ready(function() {
        $( "#confirmacion" ).submit(function( event ) {
            event.preventDefault();
            var id = $("#idorgano").attr("value");
-          $.ajax({
-                 type: "POST",
-                 url: "organo/borrar",
-                 dataType:'json',
-                 data: { idorgano:id }
-           })
+           $.post("organo/borrar", {"idorgano": id}, function(data){
+               if(data.result !== "success"){
+                   alert("Error: No se pudo concretar");
+               }
+           });
+       })
 
-           .done(function(){
-               alert("OK! Organo Borrado");
-           })
-           .fail(function(){
-               alert("Error: No se pudo concretar");
-           })
+       $('#updateo').click(function(){
+            event.preventDefault();
+            var descripcion = $("#updateo").data('descripcion');
+            var titulo = $("#updateo").data('titulo');
+            var imagen = $("#updateo").data('imagen');
+
+            var form = $('regorgano')
+
+            form.find('#descripcion').val(descripcion)
+            form.find('#titulo').val(titulo)
+            form.find('#url').val(url)    
+
+
+                // modal.find('#descripcion').val(descripcion)
        })
 
        $('#regorgano').submit(function(event){
@@ -38,31 +46,12 @@ $( document ).ready(function() {
            $("input#url").focus();
            return false;
        }
-       var parametros = {
-           descripcion:$("input#descripcion").val(),
-           titulo:$("input#titulo").val(),
-           url:$("input#url").val()
-       };
-       var json = JSON.stringify(parametros);
-       //alert(json);
-       console.log(parametros);
 
-               $.ajax({
-                   type: "POST",
-                   url: "organo/registrar",
-                   contentType: "application/json; charset=utf-8",
-                   dataType:'json',
-                   data: json,
-                   success: function(data)
-                   {
-                       $('#resp').html(data);
-                   }
-               })
-               .done(function(){
-                   alert("OK! Político Borrado");
-               })
-               .fail(function(){
-                   alert("Error: No se pudo concretar");
-               })
-           })
-   });
+       console.log(descripcion+titulo+url);
+       $.post("registrar", {"descripcion": descripcion,"titulo":titulo,"url":url}, function(data){
+           if(data.result !== "success"){
+               alert("Error: No se pudo concretar");
+           }
+       })
+   })
+ })

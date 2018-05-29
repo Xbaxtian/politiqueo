@@ -36,20 +36,15 @@ $( document ).ready(function() {
        $( "#confirmacion" ).submit(function( event ) {
            event.preventDefault();
            var id = $("#idusuario").attr("value");
-           //var parametros = $(this).serialize();
-            $.ajax({
-                   type: "POST",
-                   url: "usuarios/borrar",
-                   dataType:'json',
-                   data: { idusuario:id }
-           })
 
-           .done(function(){
-               alert("OK! Usuario Borrado");
-           })
-           .fail(function(){
-               alert("Error: No se pudo concretar");
-           })
+           $.post("usuarios/borrar", {"idusuario": id}, function(data){
+               console.log(data.result);
+               if(data.result !== "success"){
+                   console.log(data.result);
+                   modal.hide();
+                   alert("Error: No se pudo concretar");
+               }
+           });
 
         })
 
