@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class RolModel extends CI_Model{
 
     public function getRoles(){
-        $this->db->select('r.descripcion,count(u.id_rol) as total');
+        $this->db->select('r.id_rol,r.descripcion,count(u.id_rol) as total');
         $this->db->from('usuarios u');
         $this->db->join('roles r','u.id_rol = r.id_rol');
         $this->db->group_by('u.id_rol');
@@ -26,6 +26,11 @@ class RolModel extends CI_Model{
             $this->db->insert('modulos_asignados',
             array('id_modulo'=>$data['modulos'][$i],'id_rol'=>$row[0]['id']));
         }
+    }
+
+    public function borrarrol($id)
+    {  
+        $this->db->delete('roles', array('id_rol' => $id));
     }
 
 }
