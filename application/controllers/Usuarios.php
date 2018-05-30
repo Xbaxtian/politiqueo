@@ -40,7 +40,6 @@ class Usuarios extends CI_Controller {
 
 	public function recibirdatos()
 	{
-		$this->form_validation->set_rules("id", "Id", "trim|required");
 		$this->form_validation->set_rules("rol", "Rol", "required");
 		$this->form_validation->set_rules("nombres", "Nombres", "required");
 		$this->form_validation->set_rules("apellidos", "Apellidos", "required");
@@ -54,7 +53,6 @@ class Usuarios extends CI_Controller {
         else
         {
 			$data = array(
-				'id_usuario'=>$this->input->post('id'),
 				'id_rol'=>$this->input->post('rol'),
 				'nombres'=>$this->input->post('nombres'),
 				'apellidos'=>$this->input->post('apellidos'),
@@ -63,7 +61,6 @@ class Usuarios extends CI_Controller {
 			  );
 
 			$this->usuariosModel->registrarUsuario($data);
-			//redirect('usuarios');
 			header('Content-Type: application/json');
 			echo json_encode(array("result"=>"success"));
         }

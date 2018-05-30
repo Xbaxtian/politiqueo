@@ -28,13 +28,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         public function registrarUsuario($data){
            $this->db->insert('usuarios',
-           array('id_usuario'=>$data['id_usuario'],
-                    'id_rol'=>$data['id_rol'],
-                    'nombres'=>$data['nombres'],
-                    'apellidos'=>$data['apellidos'],
-                    'pass'=>$data['pass'],
-                    'correo'=>$data['correo'])
-          );
+           array('id_rol'=>$data['id_rol'],
+                'nombres'=>$data['nombres'],
+                'apellidos'=>$data['apellidos'],
+                'pass'=>$data['pass'],
+                'correo'=>$data['correo'])
+            );
 
         }
 

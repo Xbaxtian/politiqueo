@@ -7,10 +7,6 @@ class Admin extends CI_Controller {
         parent::__construct();
         $this->load->model('inicioModel');
 		$this->load->helper('Modulo');
-
-		if(!$this->session->userdata('id_usuario')){
-			redirect('login');
-		}
     }
 
 	public function index()
@@ -19,5 +15,11 @@ class Admin extends CI_Controller {
 		$resultado = $this->inicioModel->getModulo($id_rol);
 		$data = array("content"=>'admin/inicio',"dataView"=>array('resultado' => $resultado));
 		$this->load->view('layoutInicio',$data);
+	}
+
+	public function successMsj($tarea){
+		$data = array("mensaje"=>$tarea);
+		echo $tarea;
+		//$this->load->view('admin/msuccess', $data);
 	}
 }

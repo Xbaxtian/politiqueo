@@ -88,3 +88,7 @@
 .item{
   color: #000000;
 }
+
+.form-error{
+    color: rgb(179, 2, 2);
+}

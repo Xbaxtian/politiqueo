@@ -4,18 +4,10 @@
      <button type="button" class="btn close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
  </div>
  <div class="modal-body">
-     <?php echo validation_errors(); ?>
-     <?php echo form_open('usuarios/recibirdatos', array("id"=>"form-usuario")); ?>
-     <div class="form-group">
-         <label>ID Usuario</label>
-         <?php
-         $id = array('type'=>'text','name'=> 'id','placeholder'=>'ID Usuario','class'=>'form-control');
-         echo form_input($id);
-         ?>
-     </div>
+     <?php echo form_open('usuarios/recibirdatos', array("id"=>"form-validado")); ?>
      <div class="form-group">
 
-              <label>Rol</label><br>
+          <label>Rol</label><br>
 
           <div class="row offset-1">
               <div class="col-md-4 ">
@@ -37,45 +29,50 @@
              <?php }} ?>
               </div>
            </div>
+           <?php echo form_error('rol','<div class="form-error">*', '</div>'); ?>
      </div>
      <div class="form-group">
          <label>Nombres</label>
          <?php
-         $nombres = array('type'=>'text','name'=> 'nombres','placeholder'=>'Nombres','class'=>'form-control');
+         $nombres = array('type'=>'text','name'=> 'nombres','placeholder'=>'Nombres','class'=>'form-control','value'=>set_value('nombres'));
          echo form_input($nombres);
          ?>
+         <?php echo form_error('nombres','<div class="form-error">*', '</div>'); ?>
      </div>
      <div class="form-group">
          <label>Apellidos</label>
          <?php
-         $apellidos = array('type'=>'text','name'=> 'apellidos','placeholder'=>'Apellidos','class'=>'form-control');
+         $apellidos = array('type'=>'text','name'=> 'apellidos','placeholder'=>'Apellidos','class'=>'form-control','value'=>set_value('apellidos'));
          echo form_input($apellidos);
          ?>
+         <?php echo form_error('apellidos','<div class="form-error">*', '</div>'); ?>
      </div>
      <div class="form-group">
          <label>Password</label>
          <?php
-         $pass = array('type'=>'password','name'=> 'pass','placeholder'=>'Password','class'=>'form-control');
+         $pass = array('type'=>'password','name'=> 'pass','placeholder'=>'Password','class'=>'form-control','value'=>set_value('pass'));
          echo form_input($pass);
          ?>
+         <?php echo form_error('pass','<div class="form-error">*', '</div>'); ?>
      </div>
      <div class="form-group">
          <label>Correo</label>
          <?php
-         $correo = array('type'=>'email','name'=> 'correo','placeholder'=>'Correo','class'=>'form-control');
+         $correo = array('type'=>'email','name'=> 'correo','placeholder'=>'Correo','class'=>'form-control','value'=>set_value('correo'));
          echo form_input($correo);
          ?>
+         <?php echo form_error('correo','<div class="form-error">*', '</div>'); ?>
      </div>
  </div>
  <div class="modal-footer">
      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-     <button type="button" class="btn main-color-bg send-form">Guardar</button>
+     <button type="button" class="btn main-color-bg send-form">Guardar</button> <!--send form clase para enviar el formulario form-validado -->
  </div>
 
 <script type="text/javascript">
     $(document).ready(function(){
         $('.send-form').click(function(){
-                var form = $("#form-usuario");
+                var form = $("#form-validado");
                 $.post(form.attr('action'), form.serialize(), function(data){
                     if(data.result == "success"){
                         $('#modal-pop-up').modal('hide');
