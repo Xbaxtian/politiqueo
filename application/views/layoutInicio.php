@@ -108,5 +108,15 @@ if(!$this->session->userdata('id_usuario')){
                  alert( "Error de red" );
              })
          });
+
+         (function ($) {
+             $('#bsq').keyup(function () {
+                 var rex = new RegExp($(this).val(), 'i');
+                 $('.buscar tr').hide();
+                 $('.buscar tr').filter(function () {
+                     return rex.test($(this).text());
+                 }).show();
+             })
+         }(jQuery));
      })
  </script>

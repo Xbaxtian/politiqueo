@@ -17,22 +17,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
              <script type="text/javascript" src="<?php echo base_url().'js/consultas/usuarios.js' ?>"> </script>
              <br><!-- for -->
              <table id="tablausuarios" class="table table-striped table-hover">
-             <tr>
-                 <th>ID Usuario</th>
-                 <th>Nombres</th>
-                 <th>Apellidos</th>
-                 <th>Correo</th>
-                 <th></th>
-             </tr>
-             <?php for ($i=0; $i <count($resultado) ; $i++) { ?>
-             <tr>
-                 <td class="tarjeta"><?php echo $resultado[$i]['id_usuario']; ?></td>
-                 <td><?php echo $resultado[$i]['nombres']; ?></td>
-                 <td><?php echo $resultado[$i]['apellidos']; ?></td>
-                 <td><?php echo $resultado[$i]['correo']; ?></td>
-                 <td> <button class="btn pop-up btn-peru eliminar" href="usuarios/borrarUsuario" data-id="<?php echo $resultado[$i]['id_usuario']?>" ?>Borrar</button></td>
-             </tr>
-             <?php } ?>
+                 <thead>
+                     <tr>
+                         <th>ID Usuario</th>
+                         <th>Nombres</th>
+                         <th>Apellidos</th>
+                         <th>Correo</th>
+                         <th></th>
+                     </tr>
+                 </thead>
+                 <tbody class="buscar">
+                     <?php for ($i=0; $i <count($resultado) ; $i++) { ?>
+                     <tr>
+                         <td class="tarjeta"><?php echo $resultado[$i]['id_usuario']; ?></td>
+                         <td><?php echo $resultado[$i]['nombres']; ?></td>
+                         <td><?php echo $resultado[$i]['apellidos']; ?></td>
+                         <td><?php echo $resultado[$i]['correo']; ?></td>
+                         <td> <button class="btn pop-up btn-peru eliminar" href="usuarios/borrarUsuario" data-id="<?php echo $resultado[$i]['id_usuario']?>" ?>Borrar</button></td>
+                     </tr>
+                     <?php } ?>
+                 </tbody>
              </table>
              <div class="row">
                  <div class="col-md-12">
