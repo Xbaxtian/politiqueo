@@ -100,7 +100,7 @@ if(!$this->session->userdata('id_usuario')){
      $(document).ready(function(){
          $(".pop-up").click(function(){
              var btn = $(this);
-             $.get(btn.attr("href"), function(data){
+             $.post(btn.attr("href"), {"idObj":$(this).attr("data-id")},function(data){
                  $("#modal-target .modal-content").html("");
                  $("#modal-target .modal-content").html(data);
                  $("#modal-pop-up").modal();

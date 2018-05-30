@@ -30,13 +30,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                  <td><?php echo $resultado[$i]['nombres']; ?></td>
                  <td><?php echo $resultado[$i]['apellidos']; ?></td>
                  <td><?php echo $resultado[$i]['correo']; ?></td>
-                 <td> <button class="btn btn-peru eliminar" data-id="<?php echo $resultado[$i]['id_usuario']?>" data-toggle="modal" data-target="#myModal" ?>Borrar</button></td>
+                 <td> <button class="btn pop-up btn-peru eliminar" href="usuarios/borrarUsuario" data-id="<?php echo $resultado[$i]['id_usuario']?>" ?>Borrar</button></td>
              </tr>
              <?php } ?>
              </table>
              <div class="row">
                  <div class="col-md-12">
-                     <button class="btn pop-up main-color-bg float-right" href="usuarios/anadirUsuario" >Añadir Usuario</button>
+                     <button class="btn pop-up main-color-bg float-right" href="usuarios/anadirUsuario">Añadir Usuario</button>
                  </div>
              </div>
         </div>

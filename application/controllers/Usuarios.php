@@ -25,17 +25,18 @@ class Usuarios extends CI_Controller {
 		$this->load->view('admin/modales/musuarios');
 	}
 
+	public function borrarUsuario(){
+		$id = $this->input->post('idObj');
+		$data = array("objeto"=>"usuario", "id"=>$id, "direccion"=>"usuarios/borrar");
+		$this->load->view("admin/modales/confirmacion", $data);
+	}
+
 	public function borrar() // borrar
 	{
-		$id = $this->input->post('idusuario');
+		$id = $this->input->post('id');
 		$result = $this->usuariosModel->borrarusuario($id);
-		if($result == "success"){
-			redirect("usuarios");
-		}
-		else {
-			header('Content-Type: application/json');
-			echo json_encode(array("result"=>$result));
-		}
+		header('Content-Type: application/json');
+		echo json_encode(array("result"=>$result));
 	}
 
 	public function recibirdatos()
