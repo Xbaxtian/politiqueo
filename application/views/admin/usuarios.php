@@ -14,7 +14,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                  <input id="bsq" class="form-control" type="text" placeholder="Filtrar Usuarios...">
                  </div>
              </div>
-             <script type="text/javascript" src="<?php echo base_url().'js/consultas/usuarios.js' ?>"> </script>
              <br><!-- for -->
              <table id="tablausuarios" class="table table-striped table-hover">
                  <thead>

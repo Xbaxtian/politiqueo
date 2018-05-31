@@ -5,9 +5,9 @@ class RolModel extends CI_Model{
 
     public function getRoles(){
         $this->db->select('r.id_rol,r.descripcion,count(u.id_rol) as total');
-        $this->db->from('usuarios u');
-        $this->db->join('roles r','u.id_rol = r.id_rol');
-        $this->db->group_by('u.id_rol');
+        $this->db->from('roles r');
+        $this->db->join('usuarios u','u.id_rol = r.id_rol','left');
+        $this->db->group_by('r.id_rol');
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -29,7 +29,7 @@ class RolModel extends CI_Model{
     }
 
     public function borrarrol($id)
-    {  
+    {
         $this->db->delete('roles', array('id_rol' => $id));
     }
 

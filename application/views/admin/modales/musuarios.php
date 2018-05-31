@@ -63,28 +63,11 @@
          ?>
          <?php echo form_error('correo','<div class="form-error">*', '</div>'); ?>
      </div>
+     <?php echo form_close(); ?>
  </div>
  <div class="modal-footer">
      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
      <button type="button" class="btn main-color-bg send-form">Guardar</button> <!--send form clase para enviar el formulario form-validado -->
  </div>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('.send-form').click(function(){
-                var form = $("#form-validado");
-                $.post(form.attr('action'), form.serialize(), function(data){
-                    if(data.result == "success"){
-                        $('#modal-pop-up').modal('hide');
-                    }
-                    else {
-                        $("#modal-target .modal-content").html(data);
-                    }
-                }).fail(function(){
-                    alert( "Error en la red" );
-                });
-            }
-        );
-    });
-
-</script>
+ <script src="js/validations.js"></script>

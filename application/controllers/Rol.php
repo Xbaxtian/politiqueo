@@ -6,7 +6,7 @@ class Rol extends CI_Controller {
         parent::__construct();
         $this->load->model('rolModel');
         $this->load->helper('Modulo');
-
+		$this->load->library(array('form_validation'));
 		if(!$this->session->userdata('id_usuario')){
 		    $this->session->sess_destroy();
 			redirect('login');
@@ -20,19 +20,32 @@ class Rol extends CI_Controller {
 		$this->load->view('layoutInicio',$data);
 	}
 
-	public function recibirdatos() 
-	{
-		$data_rol = array('descripcion'=>$this->input->post('descripcion'));
-		$this->rolModel->registrarrol($data_rol);
+	public function anadirRol(){
+		$this->load->view('admin/modales/mroles');
+	}
 
-		$data_modulos = array('modulos' => $this->input->post('modulos'));
-	  	$this->rolModel->modulosasignados($data_modulos);
-		redirect('rol');
+	public function recibirdatos()
+	{
+		$this->form_validation->set_rules("descripcion", "Descripcion", "trim|required");
+		$this->form_validation->set_rules("modulos[]", "Modulos", "required");
+
+		if ($this->form_validation->run() == FALSE) {
+			$this->load->view('admin/modales/mroles');
+		}
+		else{
+			$data_rol = array('descripcion'=>$this->input->post('descripcion'));
+			$this->rolModel->registrarrol($data_rol);
+
+			$data_modulos = array('modulos' => $this->input->post('modulos'));
+			$this->rolModel->modulosasignados($data_modulos);
+			header('Content-Type: application/json');
+			echo json_encode(array("result"=>"success"));
+		}
 	}
 
 	public function borrar()
     {
-        $id = $this->input->post('idrol');echo $id;
+        $id = $this->input->post('idrol');
         $this->rolModel->borrarrol($id);
     }
 }

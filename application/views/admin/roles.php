@@ -24,9 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <?php } } ?>
           <div class="row justify-content-center">
               <div class="col-md-3">
-                  <button class="btn main-color-bg" data-toggle="modal" data-target="#addRol" >Añadir Rol</button>
+                  <button class="btn pop-up main-color-bg" href="rol/anadirRol">Añadir Rol</button>
               </div>
           </div>
       <script type="text/javascript" src="<?php echo base_url()."js/consultas/roles.js";?>"></script>
-      <?php include('modales/mroles.php'); ?>
 </div>
