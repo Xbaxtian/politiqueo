@@ -27,10 +27,76 @@ class Partido extends CI_Controller {
 		$this->load->view('layoutInicio',$data);
     }
 
+    public function actualizarpartido()
+    {
+        $id = $this->input->post('idObj');
+        $resultado = $this->partidosModel->obtenerpartido($id);
+		$data = array("resultado"=>$resultado);
+		$this->load->view("edicion/modales/mpartido", $data);
+    }
+
+    public function actualizar()
+    {
+        $this->form_validation->set_rules("nombre", "Nombre de Partido", "required");
+		$this->form_validation->set_rules("url","URL de imagen","required");
+
+		if ($this->form_validation->run() == FALSE)
+        {
+			$this->load->view('edicion/modales/mpartido');
+        }
+        else
+        {
+			$data = array(
+                'id' => $this->input->post('id'),
+                'nombre'=>$this->input->post('nombre'),
+				'url'=>$this->input->post('url')
+			  );
+
+			$resultado = $this->partidosModel->actualizarpartido($data);
+			header('Content-Type: application/json');
+			echo json_encode(array("result"=>$resultado));
+        }
+    }
+
+    public function recibirdatos()
+	{
+		$this->form_validation->set_rules("nombre", "Nombre de Partido", "required");
+		$this->form_validation->set_rules("url","URL de imagen","required");
+
+		if ($this->form_validation->run() == FALSE)
+        {
+			$this->load->view('edicion/modales/mpartido');
+        }
+        else
+        {
+			$data = array(
+				'nombre'=>$this->input->post('nombre'),
+				'url'=>$this->input->post('url')
+			  );
+
+			$result = $this->partidosModel->registrarpartido($data);
+			header('Content-Type: application/json');
+			echo json_encode(array("result"=>$result));
+        }
+	}
+
+    public function anadirpartido()
+    {
+		$this->load->view('edicion/modales/mpartido');
+	}
+
+    public function borrarpartido(){
+		$id = $this->input->post('idObj');
+		$data = array("objeto"=>"Partido", "id"=>$id, "direccion"=>"partido/borrar");
+		$this->load->view("admin/modales/confirmacion", $data);
+	}
+
     public function borrar()
     {
-        $id = $this->input->post('idpartido');
-        $this->partidosModel->borrarpartido($id);
+        $id = $this->input->post('id');
+        $result = $this->partidosModel->borrarpartido($id);
+        header('Content-Type: application/json');
+		echo json_encode(array("result"=>$result));
     }
 
 }

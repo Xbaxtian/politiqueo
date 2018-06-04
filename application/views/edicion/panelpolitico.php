@@ -29,18 +29,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <td><?php echo $resultado[$i]['nombres']; ?></td>
                 <td><?php echo $resultado[$i]['apellidos']; ?></td>
                 <td><a class="btn btn-peru" href="">Editar</a></td>
-                <td><button class="btn btn-peru eliminar" data-id="<?php echo $resultado[$i]['id_politico']?>" data-toggle="modal" data-target="#modalpolitico" ?>Eliminar</button></td>
+                <td><button class="btn btn-peru pop-up" href="politico/borrarpolitico" data-id="<?php echo $resultado[$i]['id_politico']?>">Eliminar</button></td>
             </tr>
             <?php } ?>
             </table>
             <div class="row tarjeta">
                 <div class="col-md-12">
-                    <a href="<?php echo base_url()."politico/panelregistrar"; ?>"><button class="btn btn-peru" >Añadir Político</button></a>
+                    <button type="button" class="btn btn-peru redirect" href="politico/panelregistrar">Añadir Político</button>
                 </div>
             </div>
+            <script type="text/javascript">
+            $(document).ready(function(){
+                $(".redirect").click(function(){
+                    var btn = $(this);
+                    window.location.href = btn.attr("href")
+                })
+            })
+            </script>
         </div>
     </div>
-
-    <?php include('modales/mpolitico.php'); ?>
-    <script type="text/javascript" src="<?php echo base_url()."js/consultas/politico.js"?>"></script>
 </div>

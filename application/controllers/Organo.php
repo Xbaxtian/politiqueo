@@ -27,32 +27,81 @@ class Organo extends CI_Controller {
 		$this->load->view('layoutInicio',$data);
     }
 
-    public function registrar()
+    public function anadirorgano()
     {
-        $data = array(
-	        'descripcion'=>$this->input->post('descripcion'),
-			'titulo'=>$this->input->post('titulo'),
-			'url'=>$this->input->post('url'),
-	      );
+		$this->load->view('edicion/modales/morgano');
+	}
 
-	    $result = $this->organosModel->registrarorgano($data);
-        redirect('organo');
-        if($result === "success"){
-
-		}
-		else {
-			header('Content-Type: application/json');
-			echo json_encode(array("result"=>$result));
-
-		}
+    public function actualizarorgano()
+    {
+        $id = $this->input->post('idObj');
+        $resultado = $this->organosModel->obtenerorgano($id);
+		$data = array("resultado"=>$resultado);
+		$this->load->view("edicion/modales/morgano", $data);
     }
+
+    public function actualizar()
+    {
+        $this->form_validation->set_rules("descripcion", "Descripcion", "required");
+		$this->form_validation->set_rules("titulo", "Titulo", "required");
+		$this->form_validation->set_rules("url","URL de imagen","required");
+
+		if ($this->form_validation->run() == FALSE)
+        {
+			$this->load->view('edicion/modales/morgano');
+        }
+        else
+        {
+			$data = array(
+                'id' => $this->input->post('id'),
+				'descripcion'=>$this->input->post('descripcion'),
+				'titulo'=>$this->input->post('titulo'),
+				'url'=>$this->input->post('url')
+			  );
+
+			$this->organosModel->actualizarOrgano($data);
+			header('Content-Type: application/json');
+			echo json_encode(array("result"=>"success"));
+        }
+    }
+
+    public function recibirdatos()
+	{
+		$this->form_validation->set_rules("descripcion", "Descripcion", "required");
+		$this->form_validation->set_rules("titulo", "Titulo", "required");
+		$this->form_validation->set_rules("url","URL de imagen","required");
+
+		if ($this->form_validation->run() == FALSE)
+        {
+			$this->load->view('edicion/modales/morgano');
+        }
+        else
+        {
+			$data = array(
+				'descripcion'=>$this->input->post('descripcion'),
+				'titulo'=>$this->input->post('titulo'),
+				'url'=>$this->input->post('url')
+			  );
+
+			$this->organosModel->registrarOrgano($data);
+			header('Content-Type: application/json');
+			echo json_encode(array("result"=>"success"));
+        }
+	}
+
+    public function borrarorgano(){
+		$id = $this->input->post('idObj');
+		$data = array("objeto"=>"Organo", "id"=>$id, "direccion"=>"organo/borrar");
+		$this->load->view("admin/modales/confirmacion", $data);
+	}
 
     public function borrar()
-    {
-        $id = $this->input->post('idorgano');
-        $this->organosModel->borrarorgano($id);
-        redirect('organo');
-    }
+	{
+		$id = $this->input->post('id');
+		$result = $this->organosModel->borrarOrgano($id);
+		header('Content-Type: application/json');
+		echo json_encode(array("result"=>$result));
+	}
 
 
 }

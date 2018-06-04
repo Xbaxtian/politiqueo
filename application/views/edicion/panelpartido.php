@@ -27,18 +27,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <tr>
                 <td><?php echo $resultado[$i]['id_partido']; ?></td>
                 <td><?php echo $resultado[$i]['nombre']; ?></td>
-                <td><a class="btn main-color-bg" href="">Editar</a></td>
-                <td><button class="btn btn-peru eliminar" data-id="<?php echo $resultado[$i]['id_partido']?>" data-toggle="modal" data-target="#modalpartido" ?>Eliminar</button></td>
+                <td><button class="btn btn-peru pop-up" href="partido/actualizarpartido" data-id="<?php echo $resultado[$i]['id_partido']?>">Editar</button></td>
+                <td><button class="btn btn-peru pop-up" href="partido/borrarpartido" data-id="<?php echo $resultado[$i]['id_partido']?>">Eliminar</button></td>
             </tr>
             <?php } ?>
             </table>
             <div class="row tarjeta">
                 <div class="col-md-12">
-                    <a href="<?php echo base_url()."partido/panelregistrar"; ?>"><button class="btn main-color-bg">Añadir Partido</button></a>
+                    <button class="btn pop-up btn-peru" href="partido/anadirpartido">Añadir Partido</button></a>
                 </div>
             </div>
         </div>
     </div>
-    <?php include('modales/mpartido.php'); ?>
-    <script type="text/javascript" src="<?php echo base_url()."js/consultas/partido.js"?>"></script>
 </div>

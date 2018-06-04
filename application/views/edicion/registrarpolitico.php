@@ -16,68 +16,104 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </figure>
                 </div>
                 <div class="col-md-10">
-                    <form id="regpolitico">
+                    <?php echo form_open(base_url()."politico/recibirdatos",array('id'=>'form-validado'));?>
                         <div class="form-group row">
                             <label for="imagenP" class="col-sm-2 col-form-label">Imagen</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" id="imagenP" placeholder="URL de imagen">
+                            <?php
+                            $url = array('type'=>'text','class'=>'form-control','name'=>'imagenP','placeholder'=>'URL de imagen');
+                            echo form_input($url);
+                            ?>
+                            <?php echo form_error('imagenP','<div class="form-error">*', '</div>'); ?>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="nombreP" class="col-sm-2 col-form-label">Nombres</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" id="nombreP" placeholder="Nombre">
+                            <?php
+                            $nombre = array('type'=>'text','class'=>'form-control','name'=>'nombreP','placeholder'=>'Nombre');
+                            echo form_input($nombre);
+                            ?>
+                            <?php echo form_error('nombreP','<div class="form-error">*', '</div>'); ?>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="nombreP" class="col-sm-2 col-form-label">Apellidos</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" id="apellidoP" placeholder="Apellidos">
+                            <?php
+                            $apellidos = array('type'=>'text','class'=>'form-control','name'=>'apellidoP','placeholder'=>'Apellidos');
+                            echo form_input($apellidos);
+                            ?>
+                            <?php echo form_error('apellidoP','<div class="form-error">*', '</div>'); ?>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="edadP" class="col-sm-2 col-form-label">Fecha de Nacimiento</label>
+                            <label for="edadP" class="col-sm-2 col-form-label">Año de Nacimiento</label>
                             <div class="col-sm-10">
-                            <input type="date" class="form-control" id="edadP" placeholder="Edad">
+                            <?php
+                            $edad = array('type'=>'date','class'=>'form-control','name'=>'edadP','placeholder'=>'Edad');
+                            echo form_input($edad);
+                            ?>
+                            <?php echo form_error('edadP','<div class="form-error">*', '</div>'); ?>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="dniP" class="col-sm-2 col-form-label">DNI</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" id="dniP" placeholder="Documento Nacional de Identidad">
+                            <?php
+                            $dni = array('type'=>'text','class'=>'form-control','name'=>'dniP','placeholder'=>'Documento Nacional de Identidad');
+                            echo form_input($dni);
+                            ?>
+                            <?php echo form_error('dniP','<div class="form-error">*', '</div>'); ?>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="bancadaP" class="col-sm-2 col-form-label">Bancada</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" id="bancadaP" placeholder="Bancada">
+                            <?php
+                            $bancada = array('type'=>'text','class'=>'form-control','name'=>'bancadaP','placeholder'=>'Bancada');
+                            echo form_input($bancada);
+                            ?>
+                            <?php echo form_error('bancadaP','<div class="form-error">*', '</div>'); ?>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="cargoP" class="col-sm-2 col-form-label">Cargo</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" id="cargoP" placeholder="Cargo">
+                            <?php
+                            $bancada = array('type'=>'text','class'=>'form-control','name'=>'cargoP','placeholder'=>'Cargo');
+                            echo form_input($bancada);
+                            ?>
+                            <?php echo form_error('cargoP','<div class="form-error">*', '</div>'); ?>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="representaP" class="col-sm-2 col-form-label">Representa</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control " id="representaP" placeholder="Representa">
+                            <?php
+                            $representa = array('type'=>'text','class'=>'form-control','name'=>'representaP','placeholder'=>'Lugar al que representa');
+                            echo form_input($representa);
+                            ?>
+                            <?php echo form_error('representaP','<div class="form-error">*', '</div>'); ?>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="condicionP" class="col-sm-2 col-form-label">Condicion</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" id="condicionP" placeholder="Condicion">
+                            <?php
+                            $condicion = array('type'=>'text','class'=>'form-control','name'=>'condicionP','placeholder'=>'Condicion');
+                            echo form_input($condicion);
+                            ?>
+                            <?php echo form_error('condicionP','<div class="form-error">*', '</div>'); ?>
                             </div>
                         </div>
                         <div class="form-group row tarjeta">
                             <div class="col-sm-10">
-                            <button type="submit" class="btn btn-peru">Registrar</button>
+                            <button class="btn btn-peru send-formp">Registrar</button>
                             </div>
                         </div>
-                    </form>
-                    <script type="text/javascript" src="<?php echo base_url()."js/consultas/politico.js"?>"></script>
+                    <?php echo form_close(); ?>
+                    <script src=<?php echo base_url()."js/validations.js";?>></script>
                 </div>
             </div>
         </div>

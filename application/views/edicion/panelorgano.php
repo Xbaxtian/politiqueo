@@ -29,18 +29,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <td><?php echo $resultado[$i]['id_organo']; ?></td>
                 <td><?php echo $resultado[$i]['descripcion']; ?></td>
                 <td><?php echo $resultado[$i]['titulo']; ?></td>
-                <td><a class="btn main-color-bg" href="">Editar</a></td>
-                <td><button class="btn btn-peru eliminar" data-id="<?php echo $resultado[$i]['id_organo']?>" data-toggle="modal" data-target="#modalorgano" ?>Eliminar</button></td>
+                <td><button class="btn pop-up main-color-bg" href="organo/actualizarorgano" data-id="<?php echo $resultado[$i]['id_organo'];?>">Editar</button></td>
+                <td><button class="btn pop-up btn-peru eliminar"  href="organo/borrarorgano" data-id="<?php echo $resultado[$i]['id_organo'];?>" >Eliminar</button></td>
             </tr>
             <?php } ?>
             </table>
             <div class="row tarjeta">
                 <div class="col-md-12">
-                <a href="<?php echo base_url()."organo/panelregistrar"; ?>"><button class="btn main-color-bg">Añadir Organo</button></a>
+                <button class="btn pop-up main-color-bg" href="organo/anadirorgano">Añadir Organo</button>
                 </div>
             </div>
         </div>
     </div>
-    <?php include('modales/morgano.php'); ?>
-    <script type="text/javascript" src="<?php echo base_url()."js/consultas/organo.js"; ?>"></script>
+    <!-- <script type="text/javascript" src="<?php // echo base_url()."js/consultas/organo.js"; ?>"></script> -->
 </div>
