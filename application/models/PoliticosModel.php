@@ -44,7 +44,7 @@ class PoliticosModel extends CI_Model{
     }
     public function borrarpolitico($id){
         $this->db->set('estado', 0);
-        $this->db->where('id', $id);
+        $this->db->where('id_politico', $id);
         $this->db->update('politicos');
     }
 
