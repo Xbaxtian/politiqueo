@@ -12,27 +12,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
-                <input class="form-control" type="text" placeholder="Filtrar Organo...">
+                <input id="bsq" class="form-control" type="text" placeholder="Filtrar Organo...">
                 </div>
             </div>
             <br>
             <table class="table table-striped table-hover tarjeta">
-            <tr>
-                <th>ID Organo</th>
-                <th>Descripción</th>
-                <th>Titulo</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <?php for ($i=0; $i <count($resultado) ; $i++) { ?>
-            <tr>
-                <td><?php echo $resultado[$i]['id_organo']; ?></td>
-                <td><?php echo $resultado[$i]['descripcion']; ?></td>
-                <td><?php echo $resultado[$i]['titulo']; ?></td>
-                <td><button class="btn pop-up main-color-bg" href="organo/actualizarorgano" data-id="<?php echo $resultado[$i]['id_organo'];?>">Editar</button></td>
-                <td><button class="btn pop-up btn-peru eliminar"  href="organo/borrarorgano" data-id="<?php echo $resultado[$i]['id_organo'];?>" >Eliminar</button></td>
-            </tr>
-            <?php } ?>
+                <thead>
+                    <tr>
+                        <th>ID Organo</th>
+                        <th>Descripción</th>
+                        <th>Titulo</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="buscar">
+                    <?php for ($i=0; $i <count($resultado) ; $i++) { ?>
+                    <tr>
+                        <td><?php echo $resultado[$i]['id_organo']; ?></td>
+                        <td><?php echo $resultado[$i]['descripcion']; ?></td>
+                        <td><?php echo $resultado[$i]['titulo']; ?></td>
+                        <td><button class="btn pop-up main-color-bg" href="organo/actualizarorgano" data-id="<?php echo $resultado[$i]['id_organo'];?>">Editar</button></td>
+                        <td><button class="btn pop-up btn-peru eliminar"  href="organo/borrarorgano" data-id="<?php echo $resultado[$i]['id_organo'];?>" >Eliminar</button></td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
             </table>
             <div class="row tarjeta">
                 <div class="col-md-12">
