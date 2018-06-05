@@ -5,7 +5,7 @@ class Rol extends CI_Controller {
 	function __construct(){
         parent::__construct();
         $this->load->model('rolModel');
-        $this->load->helper('Modulo');
+        //$this->load->helper('Modulo');
 		$this->load->library(array('form_validation'));
 		if(!$this->session->userdata('id_usuario')){
 		    $this->session->sess_destroy();

@@ -6,7 +6,7 @@ class Politico extends CI_Controller {
     function __construct(){
         parent::__construct();
         $this->load->model('politicosModel');
-        $this->load->helper('Modulo');
+        //$this->load->helper('Modulo');
 
         if(!$this->session->userdata('id_usuario')){
             $this->session->sess_destroy();
