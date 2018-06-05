@@ -18,21 +18,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
              <table id="tablausuarios" class="table table-striped table-hover">
                  <thead>
                      <tr>
-                         <th>ID Usuario</th>
-                         <th>Nombres</th>
-                         <th>Apellidos</th>
-                         <th>Correo</th>
+                         <th class="tarjeta">Nombres</th>
+                         <th class="tarjeta">Apellidos</th>
+                         <th class="tarjeta">Correo</th>
                          <th></th>
                      </tr>
                  </thead>
                  <tbody class="buscar">
                      <?php for ($i=0; $i <count($resultado) ; $i++) { ?>
                      <tr>
-                         <td class="tarjeta"><?php echo $resultado[$i]['id_usuario']; ?></td>
-                         <td><?php echo $resultado[$i]['nombres']; ?></td>
-                         <td><?php echo $resultado[$i]['apellidos']; ?></td>
-                         <td><?php echo $resultado[$i]['correo']; ?></td>
-                         <td> <button class="btn pop-up btn-peru eliminar" href="usuarios/borrarUsuario" data-id="<?php echo $resultado[$i]['id_usuario']?>" ?>Borrar</button></td>
+                         <td class="tarjeta"><?php echo $resultado[$i]['nombres']; ?></td>
+                         <td class="tarjeta"><?php echo $resultado[$i]['apellidos']; ?></td>
+                         <td class="tarjeta"><?php echo $resultado[$i]['correo']; ?></td>
+                         <td class="tarjeta"> <button class="btn pop-up btn-peru" href="usuarios/borrarUsuario" data-id="<?php echo $resultado[$i]['id_usuario']?>" ?>Borrar</button></td>
                      </tr>
                      <?php } ?>
                  </tbody>

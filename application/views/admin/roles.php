@@ -14,11 +14,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="card-body">
                         <h2><span aria-hidden="true"></span><?php echo $resultado[$i]['total']; ?> </h2>
                         <h4><?php echo $resultado[$i]['descripcion'];?></h4>
-                        <button class="btn main-color-bg" data-id="<?php echo $resultado[$i]['id_rol']?>" data-descripcion="<?php echo $resultado[$i]['descripcion'] ?>" data-toggle="modal" data-target="#addRol">Editar Rol</button>
-                        <button class="btn btn-peru eliminar" data-id="<?php echo $resultado[$i]['id_rol']?>" data-toggle="modal" data-target="#modalrol">Eliminar Rol</button>
+                        <button class="btn main-color-bg pop-up" data-id="<?php echo $resultado[$i]['id_rol']?>" href="rol/editarRol" data-descripcion="<?php echo $resultado[$i]['descripcion'] ?>" >Editar Rol</button>
+                        <button class="btn btn-peru pop-up" data-id="<?php echo $resultado[$i]['id_rol']?>" href="rol/borrarRol">Eliminar Rol</button>
                 </div>
             </div>
+            <?php if((count($resultado)%2)!=0 && (count($resultado)-1)==$i){?>
+                <div class="card">
+                    <div class="card-body">
 
+                    </div>
+                </div>
+            <?php $i++; }?>
           <?php if( ( $i % 2) == 1 ){ ?>
           </div>
           <?php } } ?>

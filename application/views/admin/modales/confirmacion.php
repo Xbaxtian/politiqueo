@@ -21,6 +21,9 @@
                     $('#modal-pop-up').modal('hide');
                     location.reload();
                 }
+                else if (data.result == "warning") {
+                    alert("Existen elementos inculados");
+                }
                 else {
                     alert("Ups, no se pudo concretar la accion, error del sistema");
                 }
