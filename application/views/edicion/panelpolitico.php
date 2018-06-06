@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
-<div class="col-md-9">
+<div id = "regPolitico" class="col-md-9">
     <div class="main-color-bg">
        <h3 class="card-header">Politicos</h3>
     </div>
@@ -28,22 +28,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <td><?php echo $resultado[$i]['id_politico']; ?></td>
                 <td><?php echo $resultado[$i]['nombres']; ?></td>
                 <td><?php echo $resultado[$i]['apellidos']; ?></td>
-                <td><a class="btn btn-peru" href="">Editar</a></td>
+                <td><button class="btn btn-peru pop-upP" href="politico/actualizarpolitico" data-id="<?php echo $resultado[$i]['id_politico']?>">Editar</button></td>
                 <td><button class="btn btn-peru pop-up" href="politico/borrarpolitico" data-id="<?php echo $resultado[$i]['id_politico']?>">Eliminar</button></td>
             </tr>
             <?php } ?>
             </table>
             <div class="row tarjeta">
                 <div class="col-md-12">
-                    <button type="button" class="btn btn-peru redirect" href="politico/panelregistrar">Añadir Político</button>
+                    <button type="button" class="btn btn-peru pop-upP" href="politico/panelregistrar">Añadir Político</button>
                 </div>
             </div>
             <script type="text/javascript">
             $(document).ready(function(){
-                $(".redirect").click(function(){
+                $(".pop-upP").click(function(){
                     var btn = $(this);
-                    window.location.href = btn.attr("href")
-                })
+                    $.post(btn.attr("href"), {"idObj":$(this).attr("data-id")},function(data){
+                        $("#regPolitico").html("");
+                        $("#regPolitico").html(data);
+                    }).fail(function(){
+                        alert( "Error de red" );
+                    })
+                });
             })
             </script>
         </div>

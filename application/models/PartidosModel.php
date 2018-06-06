@@ -25,7 +25,7 @@ class PartidosModel extends CI_Model{
     }
 
     public function getNombre($id_partido){
-        $this->db->select('nombre');
+        $this->db->select('*');
         $this->db->from('partidos');
         $this->db->where('id_partido = '.$id_partido);
         $this->db->where('estado = 1');

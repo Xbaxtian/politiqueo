@@ -19,10 +19,11 @@ $(document).ready(function(){
             var form = $("#form-validado");
             $.post(form.attr('action'), form.serialize(), function(data){
                 if(data.result == "success"){
-                    window.location.href = btn.attr("politico")
+                    location.reload();
                 }
                 else {
-                    
+                    $("#regPolitico").html("");
+                    $("#regPolitico").html(data);
                 }
             }).fail(function(){
                 alert( "Error en la red" );

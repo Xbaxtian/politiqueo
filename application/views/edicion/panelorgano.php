@@ -41,5 +41,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
     </div>
-    <!-- <script type="text/javascript" src="<?php // echo base_url()."js/consultas/organo.js"; ?>"></script> -->
 </div>

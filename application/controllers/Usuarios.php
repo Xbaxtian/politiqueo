@@ -6,7 +6,6 @@ class Usuarios extends CI_Controller {
         parent::__construct();
         $this->load->model('usuariosModel');
         $this->load->helper('modulo');
-		$this->load->library(array('form_validation'));
 		if(!$this->session->userdata('id_usuario')){
 		    $this->session->sess_destroy();
 			redirect('login');
@@ -31,7 +30,7 @@ class Usuarios extends CI_Controller {
 		$this->load->view("admin/modales/confirmacion", $data);
 	}
 
-	public function borrar() // borrar
+	public function borrar()
 	{
 		$id = $this->input->post('id');
 		$result = $this->usuariosModel->borrarusuario($id);

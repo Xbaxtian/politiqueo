@@ -48,4 +48,4 @@
             <button type="button" class="btn main-color-bg send-form">Guardar</button> <!--send form clase para enviar el formulario form-validado -->
         </div>
 
-        <script src="js/validations.js"></script>
+        <script src="<?php echo base_url()."js/validations.js";?>"></script>
