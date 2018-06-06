@@ -6,7 +6,7 @@ class Partido extends CI_Controller {
     function __construct(){
         parent::__construct();
         $this->load->model('partidosModel');
-        $this->load->helper('modulo');
+        //$this->load->helper('modulo');
 
         if(!$this->session->userdata('id_usuario')){
             $this->session->sess_destroy();

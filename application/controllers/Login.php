@@ -9,6 +9,10 @@ class Login extends CI_Controller{
     }
 
     public function index(){
+        if($this->session->userdata('id_usuario')){
+            redirect('admin');
+            die;
+        }
         $data = array("content"=>'admin/login',"dataView"=>'');
         $this->load->view('layoutAdmin',$data);
     }

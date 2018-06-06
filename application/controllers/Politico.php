@@ -8,7 +8,7 @@ class Politico extends CI_Controller {
         $this->load->model('politicosModel');
         $this->load->model('partidosModel');
         $this->load->model('cargosModel');
-        $this->load->helper('Modulo');
+        $this->load->helper('modulo');
 
         if(!$this->session->userdata('id_usuario')){
             $this->session->sess_destroy();

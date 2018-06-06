@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="col-md-9">
     <div class="main-color-bg">
-       <h3 class="card-header">Partidos</h3>
+       <h3 id="bsq" class="card-header">Partidos</h3>
     </div>
 
     <div class="card">
@@ -17,20 +17,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <br>
             <table class="table table-striped table-hover tarjeta">
-            <tr>
-                <th>ID Partido</th>
-                <th>Nombre</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <?php for ($i=0; $i <count($resultado) ; $i++) { ?>
-            <tr>
-                <td><?php echo $resultado[$i]['id_partido']; ?></td>
-                <td><?php echo $resultado[$i]['nombre']; ?></td>
-                <td><button class="btn btn-peru pop-up" href="partido/actualizarpartido" data-id="<?php echo $resultado[$i]['id_partido']?>">Editar</button></td>
-                <td><button class="btn btn-peru pop-up" href="partido/borrarpartido" data-id="<?php echo $resultado[$i]['id_partido']?>">Eliminar</button></td>
-            </tr>
-            <?php } ?>
+                <thead>
+                    <tr>
+                        <th>ID Partido</th>
+                        <th>Nombre</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="buscar">
+                    <?php for ($i=0; $i <count($resultado) ; $i++) { ?>
+                    <tr>
+                        <td><?php echo $resultado[$i]['id_partido']; ?></td>
+                        <td><?php echo $resultado[$i]['nombre']; ?></td>
+                        <td><button class="btn btn-peru pop-up" href="partido/actualizarpartido" data-id="<?php echo $resultado[$i]['id_partido']?>">Editar</button></td>
+                        <td><button class="btn btn-peru pop-up" href="partido/borrarpartido" data-id="<?php echo $resultado[$i]['id_partido']?>">Eliminar</button></td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
             </table>
             <div class="row tarjeta">
                 <div class="col-md-12">
