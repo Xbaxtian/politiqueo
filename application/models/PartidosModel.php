@@ -15,6 +15,12 @@ class PartidosModel extends CI_Model{
         return $query->result_array();
     }
 
+    public function listarTodosAdmin(){
+        $this->db->select('*');
+        $this->db->from('partidos');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
     public function listarPoliticos($id_partido){
         $this->db->select('*');
         $this->db->from('politicos');
@@ -81,6 +87,19 @@ class PartidosModel extends CI_Model{
             $this->db->set('estado', 0);
             $this->db->where('id_partido', $id);
             $this->db->update('partidos');
+            return "success";
+        } catch (Exception $e) {
+            return "error";
+        }
+
+    }
+
+    public function activarpartido($id){
+        try {
+            $this->db->set('estado', 1);
+            $this->db->where('id_partido', $id);
+            $this->db->update('partidos');
+
             return "success";
         } catch (Exception $e) {
             return "error";

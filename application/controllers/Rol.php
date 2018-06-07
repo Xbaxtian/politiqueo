@@ -56,7 +56,7 @@ class Rol extends CI_Controller {
 
 	public function borrarRol(){
 		$id = $this->input->post('idObj');
-		$data = array("objeto"=>"rol", "id"=>$id, "direccion"=>"rol/borrar");
+		$data = array("objeto"=>"rol", "id"=>$id, "direccion"=>"rol/borrar", "accion" => "borrar");
 		$this->load->view("admin/modales/confirmacion", $data);
 	}
 

@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="row justify-content-center">
                 <div class="col-md-10 tarjeta">
                     <figure class="figure">
-                        <img src="<?php echo $valueimagen; ?>" alt="">
+                        <img id="img" src="<?php echo $valueimagen; ?>" alt="" height="150" width="136" >
                     </figure>
                 </div>
                 <div class="col-md-10 tarjeta">
@@ -60,7 +60,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <label for="imagenP" class="col-sm-2 col-form-label">Imagen</label>
                             <div class="col-sm-10">
                             <?php
-                            $url = array('type'=>'text','class'=>'form-control','name'=>'imagenP','placeholder'=>'URL de imagen', 'value' => $valueimagen );
+                            $url = array('type'=>'text','class'=>'form-control','name'=>'imagenP','id'=>'url','placeholder'=>'URL de imagen', 'value' => $valueimagen );
                             echo form_input($url);
                             ?>
                             <?php echo form_error('imagenP','<div class="form-error">*', '</div>'); ?>
@@ -100,7 +100,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <label for="dniP" class="col-sm-2 col-form-label">DNI</label>
                             <div class="col-sm-10">
                             <?php
-                            $dni = array('type'=>'text','class'=>'form-control','name'=>'dniP','placeholder'=>'Documento Nacional de Identidad','type'=>'number','value'=>$valuedni);
+                            $dni = array('type'=>'text','class'=>'form-control','name'=>'dniP','placeholder'=>'Documento Nacional de Identidad','value'=>$valuedni);
                             echo form_input($dni);
                             ?>
                             <?php echo form_error('dniP','<div class="form-error">*', '</div>'); ?>
@@ -127,7 +127,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <select class="custom-select">
                                   <option selected>Cargos</option>
                                   <?php for ($i=0; $i <count($cargos) ; $i++) { ?>
-                                       <option name="<?php echo $partidos[$i]['id_cargo'] ?>" value="<?php echo $i; ?>"><?php echo $cargos[$i]['descripcion'] ?></option>
+                                       <option name="cargoP" value="<?php echo $cargos[$i]['id_cargo']; ?>"><?php echo $cargos[$i]['descripcion'] ?></option>
                                   <?php } ?>
                                 </select>
                             <?php echo form_error('cargoP','<div class="form-error">*', '</div>'); ?>
@@ -185,4 +185,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             alert( "Error de red" );
         })
     });
+
+    $('#url').change(function () {
+        var campo = $(this);
+        var url = campo.val();
+        $('#img').attr('src',url)
+    })
     </script>

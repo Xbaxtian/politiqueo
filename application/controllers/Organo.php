@@ -16,7 +16,7 @@ class Organo extends CI_Controller {
 
 	public function index()
 	{
-        $resultado = $this->organosModel->listarTodos();
+        $resultado = $this->organosModel->listarTodosAdmin();
 		$data = array("content"=>'edicion/panelorgano',"dataView"=>array('resultado'=>$resultado));
 		$this->load->view('layoutInicio',$data);
 	}
@@ -91,7 +91,7 @@ class Organo extends CI_Controller {
 
     public function borrarorgano(){
 		$id = $this->input->post('idObj');
-		$data = array("objeto"=>"Organo", "id"=>$id, "direccion"=>"organo/borrar");
+		$data = array("objeto"=>"Organo", "id"=>$id, "direccion"=>"organo/borrar", "accion" => "borrar");
 		$this->load->view("admin/modales/confirmacion", $data);
 	}
 
@@ -103,5 +103,17 @@ class Organo extends CI_Controller {
 		echo json_encode(array("result"=>$result));
 	}
 
+    public function activar(){
+        $id = $this->input->post('id');
+        $result = $this->organosModel->activarorgano($id);
+        header('Content-Type: application/json');
+		echo json_encode(array("result"=>$result));
+	}
+
+    public function activarorgano(){
+        $id = $this->input->post('idObj');
+		$data = array("objeto"=>"Organo", "id"=>$id, "direccion"=>"organo/activar", "accion" => "activar");
+		$this->load->view("admin/modales/confirmacion", $data);
+    }
 
 }

@@ -15,6 +15,13 @@ class PoliticosModel extends CI_Model{
         return $query->result_array();
     }
 
+    public function listarTodosAdmin(){
+        $this->db->select('*');
+        $this->db->from('politicos');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function getPolitico($id_politico){
         $this->db->select('pol.id_politico, pol.nombres, pol.apellidos, pol.fec_nacimiento, pol.dni, pol.id_cargo, pol.representa ,pol.id_partido, pol.condicion, pol.imagen, par.nombre');
         $this->db->from('politicos pol');
@@ -82,5 +89,20 @@ class PoliticosModel extends CI_Model{
         }
 
     }
+
+    public function activarpolitico($id){
+        try {
+            $this->db->set('estado', 1);
+            $this->db->where('id_politico', $id);
+            $this->db->update('politicos');
+
+            return "success";
+        } catch (Exception $e) {
+            return "error";
+        }
+
+    }
+
+
 
 }

@@ -26,7 +26,7 @@ class Usuarios extends CI_Controller {
 
 	public function borrarUsuario(){
 		$id = $this->input->post('idObj');
-		$data = array("objeto"=>"usuario", "id"=>$id, "direccion"=>"usuarios/borrar");
+		$data = array("objeto"=>"usuario", "id"=>$id, "direccion"=>"usuarios/borrar", "accion" => "borrar");
 		$this->load->view("admin/modales/confirmacion", $data);
 	}
 

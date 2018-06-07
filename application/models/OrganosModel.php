@@ -19,6 +19,13 @@ class OrganosModel extends CI_Model{
         }
     }
 
+    public function listarTodosAdmin(){
+        $this->db->select('*');
+        $this->db->from('organos');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function registrarorgano($data){
         try
         {
@@ -62,7 +69,7 @@ class OrganosModel extends CI_Model{
             return "error";
         }
     }
-    
+
     public function borrarorgano($id){
     try
     {
@@ -74,6 +81,19 @@ class OrganosModel extends CI_Model{
      catch(Exception $e){
          return "error";
      }
+    }
+
+    public function activarorgano($id){
+        try {
+            $this->db->set('estado', 1);
+            $this->db->where('id_organo', $id);
+            $this->db->update('organos');
+
+            return "success";
+        } catch (Exception $e) {
+            return "error";
+        }
+
     }
 
 }

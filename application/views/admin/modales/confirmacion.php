@@ -5,11 +5,11 @@
     </button>
 </div>
 <div class="modal-body">
-    <h3>¿Estás seguro de borrar este <?php echo $objeto?>?</h3>
+    <h3>¿Estás seguro de <?php echo $accion; ?> este <?php echo $objeto?>?</h3>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-peru" data-dismiss="modal">Cancelar</button>
-    <button id="delete" type="button" idobjeto="<?php echo $id;?>" href="<?php echo $direccion?>" class="btn btn-peru">Borrar</button>
+    <button id="delete" type="button" idobjeto="<?php echo $id;?>" href="<?php echo $direccion?>" class="btn btn-peru"><?php echo ucfirst($accion); ?></button>
 </div>
 
 <script type="text/javascript">

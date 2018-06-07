@@ -16,7 +16,7 @@ class Partido extends CI_Controller {
 
 	public function index()
 	{
-        $resultado = $this->partidosModel->listarTodos();
+        $resultado = $this->partidosModel->listarTodosAdmin();
 		$data = array("content"=>'edicion/panelpartido',"dataView"=>array('resultado'=>$resultado));
 		$this->load->view('layoutInicio',$data);
 	}
@@ -87,7 +87,7 @@ class Partido extends CI_Controller {
 
     public function borrarpartido(){
 		$id = $this->input->post('idObj');
-		$data = array("objeto"=>"Partido", "id"=>$id, "direccion"=>"partido/borrar");
+		$data = array("objeto"=>"Partido", "id"=>$id, "direccion"=>"partido/borrar", "accion" => "borrar");
 		$this->load->view("admin/modales/confirmacion", $data);
 	}
 
@@ -97,6 +97,19 @@ class Partido extends CI_Controller {
         $result = $this->partidosModel->borrarpartido($id);
         header('Content-Type: application/json');
 		echo json_encode(array("result"=>$result));
+    }
+
+    public function activar(){
+        $id = $this->input->post('id');
+        $result = $this->partidosModel->activarpartido($id);
+        header('Content-Type: application/json');
+		echo json_encode(array("result"=>$result));
+	}
+
+    public function activarpartido(){
+        $id = $this->input->post('idObj');
+		$data = array("objeto"=>"Partido", "id"=>$id, "direccion"=>"partido/activar", "accion" => "activar");
+		$this->load->view("admin/modales/confirmacion", $data);
     }
 
 }

@@ -18,7 +18,7 @@ class Politico extends CI_Controller {
 
 	public function index()
 	{
-        $resultado = $this->politicosModel->listarTodos();
+        $resultado = $this->politicosModel->listarTodosAdmin();
 		$data = array("content"=>'edicion/panelpolitico',"dataView"=>array('resultado'=>$resultado));
 		$this->load->view('layoutInicio',$data);
 	}
@@ -37,8 +37,8 @@ class Politico extends CI_Controller {
 		$this->form_validation->set_rules("nombreP","Nombre de politico","required");
         $this->form_validation->set_rules("apellidoP","Apellido de politico","required");
         $this->form_validation->set_rules("edadP","Año de nacimiento","required");
-        $this->form_validation->set_rules("dniP","Numero de DNI","required|min_length[8]|max_length[8]");
-        $this->form_validation->set_rules("bancadaP","Partido","required");
+        $this->form_validation->set_rules("dniP","Numero de DNI","required|min_length[8]|max_length[8]|numeric");
+    //    $this->form_validation->set_rules("bancadaP","Partido","required");
         $this->form_validation->set_rules("representaP","Lugar de representación","required");
         $this->form_validation->set_rules("condicionP","Condicion","required");
 
@@ -114,9 +114,22 @@ class Politico extends CI_Controller {
 
     public function borrarpolitico(){
 		$id = $this->input->post('idObj');
-		$data = array("objeto"=>"Politico", "id"=>$id, "direccion"=>"politico/borrar");
+		$data = array("objeto"=>"Politico", "id"=>$id, "direccion"=>"politico/borrar", "accion" => "borrar");
 		$this->load->view("admin/modales/confirmacion", $data);
 	}
+
+    public function activar(){
+        $id = $this->input->post('id');
+        $result = $this->politicosModel->activarpolitico($id);
+        header('Content-Type: application/json');
+		echo json_encode(array("result"=>$result));
+	}
+
+    public function activarpolitico(){
+        $id = $this->input->post('idObj');
+		$data = array("objeto"=>"Politico", "id"=>$id, "direccion"=>"politico/activar", "accion" => "activar");
+		$this->load->view("admin/modales/confirmacion", $data);
+    }
 
 
 
