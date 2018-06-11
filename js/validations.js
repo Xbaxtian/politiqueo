@@ -16,7 +16,7 @@ $(document).ready(function(){
     );
 
     $('.send-formp').click(function(){
-            var form = $("#form-validado");
+            var form = $("#form-validado");alert(form.serialize())
             $.post(form.attr('action'), form.serialize(), function(data){
                 if(data.result == "success"){
                     location.reload();

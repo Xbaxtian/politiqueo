@@ -16,18 +16,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="row">
                     <div class="col-4" align='center'>
                         <figure class="figure">
-                            <img src="<?php echo base_url().$listaPoliticos[$i]['imagen']?>" alt="" height="100px">
+                            <img src="<?php echo $listaPoliticos[$i]['imagen']?>" alt="" height="100px">
                         </figure>
                     </div>
                     <div class="col-8" align='center'>
                         <h4><?php echo $listaPoliticos[$i]['nombres']?><br><?php echo $listaPoliticos[$i]['apellidos']?></h4>
-                    </div>           
+                    </div>
                 </div>
             </a>
         </div>
     <?php if(($i % 2)==1){?>
         </div>
     <?php } ?>
-    <?php 
+    <?php
     }?>
 </div>

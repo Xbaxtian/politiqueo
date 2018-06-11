@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-md-3 col-sm-6 col-12 align-self-center tarjeta">
                         <a href="<?php echo base_url()."partidos/?id_partido=".$dataPartidos[$i]['id_partido'] ?>">
                             <figure class="figure">
-                                <img class="img-fluid rounded" src="<?php echo base_url().$dataPartidos[$i]['imagen'] ?>" alt="">
+                                <img class="img-fluid rounded" src="<?php echo $dataPartidos[$i]['imagen'] ?>" height="100" width="100" alt="">
                                 <h5 class="text-center"><?php echo $dataPartidos[$i]['nombre'] ?></h5>
                             </figure>
                         </a>
@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <?php if(($i % 4)==3){?>
                     </div>
                 <?php } ?>
-                <?php 
+                <?php
                 }?>
             </div>
         </div>

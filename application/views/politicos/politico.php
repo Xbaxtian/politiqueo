@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="row">
             <div class="col-md-2" align="center">
                 <figure class="figure">
-                    <img src="<?php echo base_url().$dataPolitico['imagen']?>" alt="">
+                    <img src="<?php echo $dataPolitico['imagen']?>" alt="">
                 </figure>
             </div>
             <div class="col-md-10">
@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="form-group row">
                         <label for="edadP" class="col-sm-2 col-form-label">Edad</label>
                         <div class="col-sm-10">
-                        <input type="text" readonly class="form-control" id="edadP" value="">
+                        <input type="text" readonly class="form-control" id="edadP" value="<?php echo $diff = abs(date('Y-m-d') - $dataPolitico['fec_nacimiento']);?>">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -35,13 +35,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="form-group row">
                         <label for="representaP" class="col-sm-2 col-form-label">Representa</label>
                         <div class="col-sm-10">
-                        <input type="text" readonly class="form-control" id="representaP" value="">
+                        <input type="text" readonly class="form-control" id="representaP" value="<?php echo $dataPolitico['representa']?>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="condicionP" class="col-sm-2 col-form-label">Condicion</label>
                         <div class="col-sm-10">
-                        <input type="text" readonly class="form-control" id="condicionP" value="">
+                        <input type="text" readonly class="form-control" id="condicionP" value="<?php echo $dataPolitico['condicion']?>">
                         </div>
                     </div>
                 </form>

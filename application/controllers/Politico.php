@@ -38,7 +38,7 @@ class Politico extends CI_Controller {
         $this->form_validation->set_rules("apellidoP","Apellido de politico","required");
         $this->form_validation->set_rules("edadP","Año de nacimiento","required");
         $this->form_validation->set_rules("dniP","Numero de DNI","required|min_length[8]|max_length[8]|numeric");
-    //    $this->form_validation->set_rules("bancadaP","Partido","required");
+        $this->form_validation->set_rules("bancadaP","Partido","required");
         $this->form_validation->set_rules("representaP","Lugar de representación","required");
         $this->form_validation->set_rules("condicionP","Condicion","required");
 
@@ -82,6 +82,7 @@ class Politico extends CI_Controller {
         else
         {
             $data = array(
+                    'id'=>$this->input->post('id'),
                     'url'=>$this->input->post('imagenP'),
                     'nombres'=>$this->input->post('nombreP'),
                     'apellidos'=>$this->input->post('apellidoP'),
@@ -103,7 +104,7 @@ class Politico extends CI_Controller {
 	{
 		$id = $this->input->post('idObj');
 
-    	$resultado = $this->politicosModel->getPolitico($id);
+    	$resultado = $this->politicosModel->getPoliticoAdmin($id);
         $partidopolitico = $this->partidosModel->obtenerpartido($resultado['id_partido']);
         $partidos = $this->partidosModel->listarTodos();
 

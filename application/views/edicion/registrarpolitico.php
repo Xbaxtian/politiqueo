@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $valuecargo =  " ";
         $valuerepresenta =  " ";
         $valuecondicion =  " ";
-        $direccion = "";
+        $direccion = " ";
 
     if(isset($resultado)){
 
@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $valuecargo = $resultado['id_cargo'];
         $valuerepresenta = $resultado['representa'];
         $valuecondicion = $resultado['condicion'];
-        $direccion = "politico/actualizar";
+        $direccion = "politico/actualizar"; 
     }
     else
     {
@@ -107,13 +107,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="bancadaP" class="col-sm-2 col-form-label">Bancada</label>
+                            <label for="sel" class="col-sm-2 col-form-label">Bancada</label>
                             <div class="col-sm-7">
-                                <select class="custom-select">
-                                  <option name="bancadaP" value=" <?php if(isset($resultado)){ echo $partidopolitico[0]['id_partido']; }else{ echo " ";} ?>" selected> <?php if(isset($resultado)){ echo $partidopolitico[0]['nombre']; }else{ echo "Partidos";} ?></option>
-                                  <?php for ($i=0; $i <count($partidos) ; $i++) { ?>
+                                <select class="form-control" name="bancadaP" id="sel" >
+                                  <option name="bancadaP" value="<?php if(isset($resultado)){ echo $partidopolitico[0]['id_partido']; }else{ echo " ";}?>"> <?php if(isset($resultado)){ echo $partidopolitico[0]['nombre']; }else{ echo "Partidos";} ?></option>
+                                  <?php for ($i=0; $i <count($partidos) ; $i++) { if(isset($resultado)){ if($partidopolitico[0]['id_partido'] != $partidos[$i]['id_partido'] ){?>
                                        <option name="bancadaP" value="<?php echo $partidos[$i]['id_partido']; ?>"> <?php echo $partidos[$i]['nombre'] ?> </option>
-                                  <?php } ?>
+                                  <?php }}
+                                    else{
+                                        ?>
+                                        <option name="bancadaP" value="<?php echo $partidos[$i]['id_partido']; ?>"> <?php echo $partidos[$i]['nombre'] ?> </option>
+                                    <?php }} ?>
                                 </select>
                             <?php echo form_error('bancadaP','<div class="form-error">*', '</div>'); ?>
                             </div>
