@@ -7,7 +7,9 @@ class Politico extends CI_Controller {
         parent::__construct();
         $this->load->model('politicosModel');
         $this->load->model('partidosModel');
-        $this->load->model('cargosModel');
+        $this->load->model('cargoModel');
+        $this->load->model('gradoModel');
+        $this->load->model('delitoModel');
         $this->load->helper('modulo');
 
         if(!$this->session->userdata('id_usuario')){
@@ -18,6 +20,7 @@ class Politico extends CI_Controller {
 
 	public function index()
 	{
+        //$e = $this->politicosModel->listar();
         $resultado = $this->politicosModel->listarTodosAdmin();
 		$data = array("content"=>'edicion/panelpolitico',"dataView"=>array('resultado'=>$resultado));
 		$this->load->view('layoutInicio',$data);
@@ -25,9 +28,8 @@ class Politico extends CI_Controller {
 
     public function panelregistrar()
     {
-        $cargos = $this->cargosModel->listarTodos();
-        $partidos = $this->partidosModel->listarTodos();
-        $data = array('partidos'=>$partidos,'cargos'=>$cargos);
+        $partidos = $this->partidosModel->listarTodosAdmin();
+        $data = array('partidos'=>$partidos);
 		$this->load->view('edicion/registrarpolitico',$data);
     }
 
@@ -47,21 +49,39 @@ class Politico extends CI_Controller {
             $this->panelregistrar();
         }
         else{
-            $data = array(
+            $data_politico = array(
                     'url'=>$this->input->post('imagenP'),
                     'nombres'=>$this->input->post('nombreP'),
                     'apellidos'=>$this->input->post('apellidoP'),
                     'edad'=>$this->input->post('edadP'),
                     'dni'=>$this->input->post('dniP'),
                     'bancada'=>$this->input->post('bancadaP'),
-                    'cargo'=>$this->input->post('cargoP'),
+        //            'cargo'=>$this->input->post('cargoP'),
                     'representa'=>$this->input->post('representaP'),
-                    'condicion'=>$this->input->post('condicionP'),
-                );
+                    'condicion'=>$this->input->post('condicionP')
+            );
+            $data_academica =  array(
+                'grado' => $this->input->post('gradoP'),
+                'carrera' => $this->input->post('carreraP'),
+                'añoinicio' => $this->input->post('añoinicioP'),
+                'añofinal' => $this->input->post('añofinalP')
+            );
+            $data_cargos =  array(
+                'cargo' => $this->input->post('cargoP'),
+                'añoinicio' => $this->input->post('añoiniciocP'),
+                'añofinal' => $this->input->post('añofinalcP')
+            );
+            $data_delitos =  array(
+                'delito' => $this->input->post('delitoP'),
+                'descripcion' => $this->input->post('descripciondP'),
+                'fecha' => $this->input->post('fechadP')
+            );
 
-            $resultado = $this->politicosModel->registrarpolitico($data);
+            //$data => array('datapolitico'=>$data_politico,'data_academica'=>$data_academica,);
+            $resultado = $this->politicosModel->registrarpolitico($data_politico,$data_academica,$data_cargos,$data_delitos);
             header('Content-Type: application/json');
             echo json_encode(array("result"=>$resultado));
+
         }
     }
 
@@ -71,7 +91,7 @@ class Politico extends CI_Controller {
 		$this->form_validation->set_rules("nombreP","Nombre de politico","required");
         $this->form_validation->set_rules("apellidoP","Apellido de politico","required");
         $this->form_validation->set_rules("edadP","Año de nacimiento","required");
-        $this->form_validation->set_rules("dniP","Numero de DNI","required|min_length[8]|max_length[8]");
+        $this->form_validation->set_rules("dniP","Numero de DNI","required|min_length[8]|max_length[8]|numeric");
         $this->form_validation->set_rules("representaP","Lugar de representación","required");
         $this->form_validation->set_rules("condicionP","Condicion","required");
 
@@ -89,12 +109,29 @@ class Politico extends CI_Controller {
                     'edad'=>$this->input->post('edadP'),
                     'dni'=>$this->input->post('dniP'),
                     'bancada'=>$this->input->post('bancadaP'),
-                    'cargo'=>$this->input->post('cargoP'),
+            //        'cargo'=>$this->input->post('cargoP'),
                     'representa'=>$this->input->post('representaP'),
                     'condicion'=>$this->input->post('condicionP'),
                 );
 
-			$result = $this->politicosModel->actualizarpolitico($data);
+                $data_academica =  array(
+                    'grado' => $this->input->post('gradoP'),
+                    'carrera' => $this->input->post('carreraP'),
+                    'añoinicio' => $this->input->post('añoinicioP'),
+                    'añofinal' => $this->input->post('añofinalP')
+                );
+                $data_cargos =  array(
+                    'cargo' => $this->input->post('cargoP'),
+                    'añoinicio' => $this->input->post('añoiniciocP'),
+                    'añofinal' => $this->input->post('añofinalcP')
+                );
+                $data_delitos =  array(
+                    'delito' => $this->input->post('delitoP'),
+                    'descripcion' => $this->input->post('descripciondP'),
+                    'fecha' => $this->input->post('fechadP')
+                );
+
+			$result = $this->politicosModel->actualizarpolitico($data,$data_academica,$data_cargos,$data_delitos);
 			header('Content-Type: application/json');
 			echo json_encode(array("result"=>$result));
         }
@@ -103,12 +140,22 @@ class Politico extends CI_Controller {
     public function actualizarpolitico()
 	{
 		$id = $this->input->post('idObj');
+        $resultado = $this->politicosModel->getPoliticoAdmin($id);
 
-    	$resultado = $this->politicosModel->getPoliticoAdmin($id);
         $partidopolitico = $this->partidosModel->obtenerpartido($resultado['id_partido']);
-        $partidos = $this->partidosModel->listarTodos();
+        $cargospolitico = $this->cargoModel->obtenercargo($id);
+        $estudiospolitico = $this->gradoModel->obtenerestudios($id);
+        $delitospolitico = $this->delitoModel->obtenerdelitos($id);
 
-        $data = array('resultado'=>$resultado,'partidos'=>$partidos,'partidopolitico'=>$partidopolitico);
+        $cargos = $this->cargoModel->listarTodos();
+        $partidos = $this->partidosModel->listarTodosAdmin();
+        $grados = $this->gradoModel->listarTodos();
+        $delitos = $this->delitoModel->listarTodos();
+
+        $data = array('resultado'=>$resultado,'partidopolitico' => $partidopolitico,
+                      'cargos' => $cargos, 'partidos' => $partidos, 'grados'=>$grados, 'delitos' => $delitos,
+                       'cargospolitico'=>$cargospolitico, 'estudiospolitico'=>$estudiospolitico,'delitospolitico'=>$delitospolitico);
+
         $this->load->view('edicion/registrarpolitico',$data);
 	}
 
@@ -132,7 +179,26 @@ class Politico extends CI_Controller {
 		$this->load->view("admin/modales/confirmacion", $data);
     }
 
+    public function agregaracademico()
+    {
+        $grados = $this->gradoModel->listarTodos();
+        $data=array('grados'=>$grados);
+        $this->load->view("edicion/modales/academico",$data);
+    }
 
+    public function agregarcargo()
+    {
+        $cargos = $this->cargoModel->listarTodos();
+        $data=array('cargos'=>$cargos);
+        $this->load->view("edicion/modales/cargos",$data);
+    }
+
+    public function agregardelito()
+    {
+        $delitos = $this->delitoModel->listarTodos();
+        $data=array('delitos'=>$delitos);
+        $this->load->view("edicion/modales/delitos",$data);
+    }
 
     public function borrar()
     {

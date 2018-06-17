@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $valuecargo = $resultado['id_cargo'];
         $valuerepresenta = $resultado['representa'];
         $valuecondicion = $resultado['condicion'];
-        $direccion = "politico/actualizar"; 
+        $direccion = "politico/actualizar";
     }
     else
     {
@@ -54,7 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </figure>
                 </div>
                 <div class="col-md-10 tarjeta">
-                    <?php echo form_open($direccion,array('id'=>'form-validado'));?>
+                    <?php echo form_open($direccion,array('id'=>'form-validadop')); ?>
                         <input type="hidden" name="id" value=<?php echo $valueid; ?>>
                         <div class="form-group row">
                             <label for="imagenP" class="col-sm-2 col-form-label">Imagen</label>
@@ -126,21 +126,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="cargoP" class="col-sm-2 col-form-label">Cargo</label>
-                            <div class="col-sm-7">
-                                <select class="custom-select">
-                                  <option selected>Cargos</option>
-                                  <?php for ($i=0; $i <count($cargos) ; $i++) { ?>
-                                       <option name="cargoP" value="<?php echo $cargos[$i]['id_cargo']; ?>"><?php echo $cargos[$i]['descripcion'] ?></option>
-                                  <?php } ?>
-                                </select>
-                            <?php echo form_error('cargoP','<div class="form-error">*', '</div>'); ?>
-                            </div>
-                            <div class="col-sm-3 align-self-center ">
-                            <button type="button" class="btn btn-peru pop-up btn-sm" href="<?php echo base_url()."cargo"; ?>">Añadir Cargo</button>
-                            </div>
-                        </div>
-                        <div class="form-group row">
                             <label for="representaP" class="col-sm-2 col-form-label">Representa</label>
                             <div class="col-sm-10">
                             <?php
@@ -160,8 +145,206 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <?php echo form_error('condicionP','<div class="form-error">*', '</div>'); ?>
                             </div>
                         </div>
+                        <!-- -->
+                        <hr>
+                        <h2>Formación académica</h2>
+                        <hr>
+                        <?php if( isset( $resultado ) ){
+                            if( isset($estudiospolitico) ) {
+                            for ($i=0; $i < count($estudiospolitico) ; $i++) {?>
+                                <div class="form-group">
+                                    <h5>Estudios Universitarios o Postgrado</h5>
+                                    <div class="form-group row">
+                                            <label for="gradoP" class="col-sm-2 col-form-label">Grado</label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control" name="gradoP[]" id="sel" >
+                                                  <option name="gradoP[]" value="<?php echo $estudiospolitico[$i]['id_grado'];?>"> <?php echo $estudiospolitico[$i]['nombre']?></option>
+                                                  <?php for ($j=0; $j <count($grados) ; $j++) { ?>
+                                                          <option name="gradoP[]" value="<?php echo $grados[$j]['id_grado']; ?>"> <?php echo $grados[$j]['nombre'];?> </option>
+                                                  <?php } ?>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3 align-self-center ">
+                                            <button type="button" class="btn btn-peru pop-up btn-sm" href="grado">Añadir Grado</button>
+                                            </div>
+                                     </div>
+                                     <div class="form-group row">
+                                         <label for="carreraP" class="col-sm-2 col-form-label">Carrera</label>
+                                         <div class="col-sm-10">
+                                         <?php
+                                         $carrera = array('type'=>'text','class'=>'form-control','name'=>'carreraP[]','placeholder'=>'Carrera Universitaria','value'=>$estudiospolitico[$i]['descripcion']);
+                                         echo form_input($carrera);
+                                         ?>
+                                         <?php echo form_error('carreraP','<div class="form-error">*', '</div>'); ?>
+                                         </div>
+                                     </div>
+                                     <div class="form-group row">
+                                         <label for="añoinicioP" class="col-sm-2 col-form-label">Fecha de inicio</label>
+                                         <div class="col-sm-10">
+                                         <?php
+                                         $añoinicio = array('type'=>'date','class'=>'form-control','name'=>'añoinicioP[]','placeholder'=>'Año de Inicio','value'=>$estudiospolitico[$i]['fec_inicio']);
+                                         echo form_input($añoinicio);
+                                         ?>
+                                         <?php echo form_error('añoinicioP','<div class="form-error">*', '</div>'); ?>
+                                         </div>
+                                     </div>
+                                     <div class="form-group row">
+                                         <label for="añofinalP" class="col-sm-2 col-form-label">Fecha de termino</label>
+                                         <div class="col-sm-10">
+                                         <?php
+                                         $añofinal = array('type'=>'date','class'=>'form-control','name'=>'añofinalP[]','placeholder'=>'Año de Culminación','value'=>$estudiospolitico[$i]['fec_fin']);
+                                         echo form_input($añofinal);
+                                         ?>
+                                         <?php echo form_error('añofinalP','<div class="form-error">*', '</div>'); ?>
+                                         </div>
+                                     </div>
+                                 </div>
+                        <?php }
+                        } ?>
+                            <div class='form-group' id='formacademico'></div>
+                            <div class="form-group row tarjeta justify-content-center">
+                                <div class="col-sm-10">
+                                <button type="button" href="politico/agregaracademico" class="btn pop-upaca main-color-bg">Agregar Historial Academico</button>
+                                </div>
+                            </div>
+                        <?php }
+                        else{?>
+                        <div class="form-group" id="formacademico">
+                        </div>
+                         <div class="form-group row tarjeta justify-content-center">
+                             <div class="col-sm-10">
+                             <button type="button" class="btn main-color-bg pop-upaca" href="politico/agregaracademico">Agregar Historial Academico</button>
+                             </div>
+                         </div>
+                        <?php } ?>
+                         <hr>
+                         <h2>Historial de cargos públicos</h2>
+                         <hr>
+                         <?php if( isset($resultado) ) {
+                                if( isset($cargospolitico) ){
+                                for ($i=0; $i < count($cargospolitico) ; $i++) { ?>
+                         <div class="form-group" >
+                             <h5>Cargo(s) actual(es) u ocupado(s)</h5>
+                             <div class="form-group row">
+                                 <label for="cargoP" class="col-sm-2 col-form-label">Cargo</label>
+                                 <div class="col-sm-7">
+                                     <select class="form-control" name="cargoP[]" id="sel" >
+                                       <option name="cargoP[]" value="<?php echo $cargospolitico[$i]['id_cargo']; ?>"><?php echo $cargospolitico[$i]['descripcion']; ?></option>
+                                       <?php for ($j=0; $j <count($cargos) ; $j++) { ?>
+                                            <option name="cargoP" value="<?php echo $cargos[$j]['id_cargo']; ?>"><?php echo $cargos[$j]['descripcion'] ?></option>
+                                       <?php } ?>
+                                     </select>
+                                 <?php echo form_error('cargoP','<div class="form-error">*', '</div>'); ?>
+                                 </div>
+                                 <div class="col-sm-3 align-self-center ">
+                                 <button type="button" class="btn btn-peru pop-up btn-sm" href="<?php echo base_url()."cargo"; ?>">Añadir Cargo</button>
+                                 </div>
+                             </div>
+                              <div class="form-group row">
+                                  <label for="añoinicioP" class="col-sm-2 col-form-label">Fecha de inicio</label>
+                                  <div class="col-sm-10">
+                                  <?php
+                                  $añoinicio = array('type'=>'date','class'=>'form-control','name'=>'añoiniciocP[]','placeholder'=>'Año de Inicio','value'=>$cargospolitico[$i]['fec_inicio']);
+                                  echo form_input($añoinicio);
+                                  ?>
+                                  <?php echo form_error('añoinicioP','<div class="form-error">*', '</div>'); ?>
+                                  </div>
+                              </div>
+                              <div class="form-group row">
+                                  <label for="añofinalP" class="col-sm-2 col-form-label">Fecha de termino</label>
+                                  <div class="col-sm-10">
+                                  <?php
+                                  $añofinal = array('type'=>'date','class'=>'form-control','name'=>'añofinalcP[]','placeholder'=>'Año de Culminación','value'=>$cargospolitico[$i]['fec_fin']);
+                                  echo form_input($añofinal);
+                                  ?>
+                                  <?php echo form_error('añofinalP','<div class="form-error">*', '</div>'); ?>
+                                  </div>
+                              </div>
+                          </div>
+                        <?php }
+                            } ?>
+                            <div class="form-group" id="formcargos">
+                            </div>
+                            <div class="form-group row tarjeta justify-content-center">
+                                <div class="col-sm-10">
+                                <button type="button" href="politico/agregarcargo" class="btn pop-upcar main-color-bg">Agregar Cargo Ocupado</button>
+                                </div>
+                            </div>
+                        <?php }
+                        else{?>
+                            <div class="form-group" id="formcargos">
+                            </div>
+                             <div class="form-group row tarjeta justify-content-center">
+                                 <div class="col-sm-10">
+                                 <button type="button" href="politico/agregarcargo" class="btn main-color-bg pop-upcar">Agregar Cargo Ocupado</button>
+                                 </div>
+                             </div>
+                        <?php } ?>
+                         <hr>
+                         <h2>Casos de corrupcion implicados</h2>
+                         <hr>
+                         <?php if( isset($resultado) ){
+                                if( isset($delitospolitico) ){ 
+                                    for ($i=0; $i <count($delitospolitico) ; $i++) { ?>
+                         <div class="form-group">
+                             <h5>Caso(s) involucrado(s)</h5>
+                             <div class="form-group row">
+                                 <label for="delitoP" class="col-sm-2 col-form-label">Grado</label>
+                                 <div class="col-sm-7">
+                                     <select class="form-control" name="delitoP[]" id="sel" >
+                                       <option name="delitoP[]" value="<?php echo $delitospolitico[$i]['id_delito']; ?>"><?php echo $delitospolitico[$i]['nombre']; ?></option>
+                                        <?php for ($j=0; $j <count($delitos) ; $j++) { ?>
+                                               <option name="delitoP[]" value="<?php echo $delitos[$j]['id_delito']; ?>"> <?php echo $delitos[$j]['nombre']; ?> </option>
+                                        <?php } ?>
+                                     </select>
+                                 </div>
+                                 <div class="col-sm-3 align-self-center ">
+                                 <button type="button" class="btn btn-peru pop-up btn-sm" href="delito">Añadir Delito</button>
+                                 </div>
+                              </div>
+                              <div class="form-group row">
+                                  <label for="descripciondP" class="col-sm-2 col-form-label">Caso</label>
+                                  <div class="col-sm-10">
+                                  <?php
+                                  $descripciond = array('type'=>'text','class'=>'form-control','name'=>'descripciondP[]','rows'=>5,'placeholder'=>'Descripcion de el hecho de corrupción',
+                                                        'value'=>$delitospolitico[$i]['descripcion']);
+                                  echo form_textarea($descripciond);
+                                  ?>
+                                  <?php echo form_error('descripciondP','<div class="form-error">*', '</div>'); ?>
+                                  </div>
+                              </div>
+                              <div class="form-group row">
+                                  <label for="fechadP" class="col-sm-2 col-form-label">Fecha Registrada</label>
+                                  <div class="col-sm-10">
+                                  <?php
+                                  $fecha = array('type'=>'date','class'=>'form-control','name'=>'fechadP[]','placeholder'=>'Fecha','value'=>$delitospolitico[$i]['fec']);
+                                  echo form_input($fecha);
+                                  ?>
+                                  <?php echo form_error('fechadP','<div class="form-error">*', '</div>'); ?>
+                                  </div>
+                              </div>
+                          </div>
+                            <?php }
+                            }
+                            ?>
+                            <div class="form-group" id="formdelitos"></div>
+                            <div class="form-group row tarjeta justify-content-center">
+                                <div class="col-sm-10">
+                                <button type="button" href="politico/agregardelito" class="btn pop-updel main-color-bg">Agregar Caso Implicado</button>
+                                </div>
+                            </div>
+                         <?php }
+                          else{?>
+                              <div class="form-group" id="formdelitos"></div>
+                               <div class="form-group row tarjeta justify-content-center">
+                                   <div class="col-sm-10">
+                                   <button  type="button" href="politico/agregardelito" class="btn pop-updel main-color-bg">Agregar Caso Implicado</button>
+                                   </div>
+                               </div>
+
+                          <?php } ?>
                         <?php echo form_close(); ?>
-                        <div class="form-group row tarjeta">
+                        <div class="form-group row tarjeta justify-content-center">
                             <div class="col-sm-10">
                             <button class="btn btn-peru send-formp">Guardar</button>
                             </div>
@@ -171,28 +354,87 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
     </div>
-    <h2>Formación academica</h2>
-    <hr>
-    <h2>Historial de cargos públicos</h2>
-    <hr>
-    <h2>Casos de corrupcion implicados</h2>
-    <hr>
-
     <script type="text/javascript">
-    $(".pop-up").click(function(){
-        var btn = $(this);
-        $.post(btn.attr("href"), {"idObj":$(this).attr("data-id")},function(data){
-            $("#modal-target .modal-content").html("");
-            $("#modal-target .modal-content").html(data);
-            $("#modal-pop-up").modal();
-        }).fail(function(){
-            alert( "Error de red" );
-        })
-    });
+        $(".pop-up").click(function(){
+            var btn = $(this);
+            $.post(btn.attr("href"), {"idObj":$(this).attr("data-id")},function(data){
+                $("#modal-target .modal-content").html("");
+                $("#modal-target .modal-content").html(data);
+                $("#modal-pop-up").modal();
+            }).fail(function(){
+                alert( "Error de red" );
+            })
+        });
+        i = 0;
+        j = 0;
+        $(".pop-upaca").click(function(){
+            var btn = $(this);
+            $.post(btn.attr("href"), {"idObj":$(this).attr("data-id")},function(data){
+                if( i == 0){
+                j = i;
+                $("#formacademico").html(data);
+                $("#formacademico").after("<div class='form-group' id='formacademico"+i+"'></div>");
+                i++;
+                }
+                else{
+                    $("#formacademico"+j).html(data);
+                    $("#formacademico"+j).after("<div class='form-group' id='formacademico"+i+"'></div>");
+                    j=i;
+                    i++;
+                }
+            }).fail(function(){
+                alert( "Error de red" );
+            })
+        });
 
-    $('#url').change(function () {
-        var campo = $(this);
-        var url = campo.val();
-        $('#img').attr('src',url)
-    })
+        l = 0;
+        m = 0;
+        $(".pop-upcar").click(function(){
+            var btn = $(this);
+            $.post(btn.attr("href"), {"idObj":$(this).attr("data-id")},function(data){
+                if( l == 0){
+                m = l;
+                $("#formcargos").html(data);
+                $("#formcargos").after("<div class='form-group' id='formcargos"+l+"'></div>");
+                l++;
+                }
+                else{
+                    $("#formcargos"+m).html(data);
+                    $("#formcargos"+m).after("<div class='form-group' id='formcargos"+l+"'></div>");
+                    m=l;
+                    l++;
+                }
+            }).fail(function(){
+                alert( "Error de red" );
+            })
+        });
+
+        p = 0;
+        q = 0;
+        $(".pop-updel").click(function(){
+            var btn = $(this);
+            $.post(btn.attr("href"), {"idObj":$(this).attr("data-id")},function(data){
+                if( p == 0){
+                q = p;
+                $("#formdelitos").html(data);
+                $("#formdelitos").after("<div class='form-group' id='formdelitos"+p+"'></div>");
+                p++;
+                }
+                else{
+                    $("#formdelitos"+q).html(data);
+                    $("#formdelitos"+q).after("<div class='form-group' id='formdelitos"+p+"'></div>");
+                    q = p;
+                    p++;
+                }
+            }).fail(function(){
+                alert( "Error de red" );
+            })
+        });
+
+
+        $('#url').change(function () {
+            var campo = $(this);
+            var url = campo.val();
+            $('#img').attr('src',url)
+        })
     </script>

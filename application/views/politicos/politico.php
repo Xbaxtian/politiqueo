@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="row">
             <div class="col-md-2" align="center">
                 <figure class="figure">
-                    <img src="<?php echo $dataPolitico['imagen']?>" alt="">
+                    <img src="<?php echo $dataPolitico['imagen']?>" height="100" width="100">
                 </figure>
             </div>
             <div class="col-md-10">
@@ -47,11 +47,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </form>
             </div>
         </div>
-        <h2>Formación academica</h2>
+        <div class="">
+            <h2>Formación academica</h2>
+            <table class="table tarjeta table-sm">
+                <thead class="btn-peru">
+                    <tr>
+                        <th>Estudios </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr>
+                        <th>Grado</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Descripción</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Año de inicio</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Año de finalización</th>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+        </div>
         <hr>
-        <h2>Historial de cargos públicos</h2>
+        <div class="">
+            <h2>Historial de cargos públicos</h2>
+        </div>
         <hr>
-        <h2>Casos de corrupcion implicados</h2>
+        <div class="">
+            <h2>Casos de corrupcion implicados</h2>
+        </div>
         <hr>
     </div>
 </section>

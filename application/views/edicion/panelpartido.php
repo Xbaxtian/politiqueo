@@ -35,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td><button class="btn btn-peru pop-up" href="partido/borrarpartido" data-id="<?php echo $resultado[$i]['id_partido']?>">Eliminar</button></td>
                         <?php } ?>
                         <?php if($resultado[$i]['estado'] == 0) {?>
-                        <td><button class="btn btn-peru pop-up" href="partido/activarpartido" data-id="<?php echo $resultado[$i]['id_partido']?>">Activar</button></td>
+                        <td><button class="btn btn-success pop-up" href="partido/activarpartido" data-id="<?php echo $resultado[$i]['id_partido']?>">Activar</button></td>
                         <?php } ?>
                     </tr>
                     <?php } ?>

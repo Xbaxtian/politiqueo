@@ -16,7 +16,7 @@ class PartidosModel extends CI_Model{
     }
 
     public function listarTodosAdmin(){
-        $this->db->select('*');
+        $this->db->select('id_partido,nombre');
         $this->db->from('partidos');
         $query = $this->db->get();
         return $query->result_array();
@@ -55,7 +55,7 @@ class PartidosModel extends CI_Model{
     }
 
     public function obtenerpartido($id){
-        $this->db->select('*');
+        $this->db->select('id_partido,nombre');
         $this->db->from('partidos');
         $this->db->where('id_partido ='.$id);
         $this->db->where('estado = 1');

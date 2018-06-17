@@ -5,7 +5,8 @@ class Cargo extends CI_Controller {
 
 	function __construct(){
         parent::__construct();
-		$this->load->helper('Modulo');
+		$this->load->helper('modulo');
+		$this->load->model('cargoModel');
     }
 
 	public function index()
@@ -35,5 +36,5 @@ class Cargo extends CI_Controller {
         }
 	}
 
-	
+
 }
