@@ -284,7 +284,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                          <h2>Casos de corrupcion implicados</h2>
                          <hr>
                          <?php if( isset($resultado) ){
-                                if( isset($delitospolitico) ){ 
+                                if( isset($delitospolitico) ){
                                     for ($i=0; $i <count($delitospolitico) ; $i++) { ?>
                          <div class="form-group">
                              <h5>Caso(s) involucrado(s)</h5>
@@ -306,7 +306,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                   <label for="descripciondP" class="col-sm-2 col-form-label">Caso</label>
                                   <div class="col-sm-10">
                                   <?php
-                                  $descripciond = array('type'=>'text','class'=>'form-control','name'=>'descripciondP[]','rows'=>5,'placeholder'=>'Descripcion de el hecho de corrupción',
+                                  $descripciond = array('type'=>'text','class'=>'form-control autoExpand','name'=>'descripciondP[]','rows'=>5,'data-min-rows'=>5,'placeholder'=>'Descripcion de el hecho de corrupción',
                                                         'value'=>$delitospolitico[$i]['descripcion']);
                                   echo form_textarea($descripciond);
                                   ?>
@@ -437,4 +437,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             var url = campo.val();
             $('#img').attr('src',url)
         })
+
+        $(document)
+        .one('focus.autoExpand', 'textarea.autoExpand', function(){
+        var savedValue = this.value;
+        this.value = '';
+        this.baseScrollHeight = this.scrollHeight;
+        this.value = savedValue;
+        })
+        .on('input.autoExpand', 'textarea.autoExpand', function(){
+        var minRows = this.getAttribute('data-min-rows')|0, rows;
+        this.rows = minRows;
+        rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
+        this.rows = minRows + rows;
+    });
     </script>

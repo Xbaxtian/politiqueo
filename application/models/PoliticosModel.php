@@ -125,7 +125,7 @@ class PoliticosModel extends CI_Model{
     public function actualizarpolitico($data,$data_academica,$data_cargos,$data_delitos){
         try
         {
-            //$this->db->trans_start(TRUE);
+            $this->db->trans_begin();
 
             $this->db->set('nombres',$data['nombres']);
             $this->db->set('apellidos',$data['apellidos']);
@@ -182,8 +182,16 @@ class PoliticosModel extends CI_Model{
                 );
             }
 
-            //$this->db->trans_complete();
-            return "success";
+            if ($this->db->trans_status() === FALSE)
+            {
+                $this->db->trans_rollback();
+                return "error";
+            }
+            else
+            {
+                $this->db->trans_commit();
+                return "success";
+            }
         }
         catch (Exception $e) {
             return "error";

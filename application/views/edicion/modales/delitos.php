@@ -17,7 +17,7 @@
          <label for="descripciondP" class="col-sm-2 col-form-label">Caso</label>
          <div class="col-sm-10">
          <?php
-         $descripciond = array('type'=>'text','class'=>'form-control','name'=>'descripciondP[]','rows'=>5,'placeholder'=>'Descripción del caso de corrupción','value'=>'');
+         $descripciond = array('type'=>'text','class'=>'form-control autoExpand','name'=>'descripciondP[]','rows'=>5,'data-min-rows'=>5,'placeholder'=>'Descripción del caso de corrupción','value'=>'');
          echo form_textarea($descripciond);
          ?>
          <?php echo form_error('descripciondP','<div class="form-error">*', '</div>'); ?>
@@ -33,7 +33,7 @@
          <?php echo form_error('fechadP','<div class="form-error">*', '</div>'); ?>
          </div>
      </div>
-    
+
     <script type="text/javascript">
     $(".pop-up").click(function(){
         var btn = $(this); alert(btn.attr("href"));
@@ -44,5 +44,19 @@
         }).fail(function(){
             alert( "Error de red" );
         })
+    });
+
+        $(document)
+        .one('focus.autoExpand', 'textarea.autoExpand', function(){
+        var savedValue = this.value;
+        this.value = '';
+        this.baseScrollHeight = this.scrollHeight;
+        this.value = savedValue;
+        })
+        .on('input.autoExpand', 'textarea.autoExpand', function(){
+        var minRows = this.getAttribute('data-min-rows')|0, rows;
+        this.rows = minRows;
+        rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
+        this.rows = minRows + rows;
     });
     </script>

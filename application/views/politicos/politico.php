@@ -47,8 +47,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </form>
             </div>
         </div>
-        <div class="">
+        <div class="row">
             <h2>Formación academica</h2>
+            <?php for ($i=0; $i < count($data_academica); $i++) {?>
             <table class="table tarjeta table-sm">
                 <thead class="btn-peru">
                     <tr>
@@ -59,32 +60,75 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <tbody >
                     <tr>
                         <th>Grado</th>
-                        <td></td>
+                        <td><?php  echo $data_academica[$i]['nombre'];?></td>
                     </tr>
                     <tr>
                         <th>Descripción</th>
-                        <td></td>
+                        <td><?php  echo $data_academica[$i]['descripcion'];?></td>
                     </tr>
                     <tr>
                         <th>Año de inicio</th>
-                        <td></td>
+                        <td><?php echo $data_academica[$i]['fec_inicio']; ?></td>
                     </tr>
                     <tr>
                         <th>Año de finalización</th>
-                        <td></td>
+                        <td><?php echo $data_academica[$i]['fec_fin']; ?></td>
                     </tr>
                 </tbody>
             </table>
             <hr>
+            <?php } ?>
         </div>
         <hr>
-        <div class="">
+        <div class="row">
             <h2>Historial de cargos públicos</h2>
+            <?php for ($i=0; $i < count($data_cargos); $i++) {?>
+            <table class="table tarjeta table-sm">
+                <thead class="btn-peru">
+                    <tr>
+                        <th>Cargo Ocupado</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr>
+                        <th>Descripción</th>
+                        <td><?php echo $data_cargos[$i]['descripcion']; ?></td>
+                    </tr>
+                    <tr>
+                        <th>Año de inicio</th>
+                        <td><?php echo $data_cargos[$i]['fec_inicio']; ?></td>
+                    </tr>
+                    <tr>
+                        <th>Año de finalización</th>
+                        <td><?php echo $data_cargos[$i]['fec_fin']; ?></td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <?php } ?>
         </div>
         <hr>
-        <div class="">
-            <h2>Casos de corrupcion implicados</h2>
-        </div>
+        <h2>Casos de corrupcion implicados</h2>
+            <?php for ($i=0; $i < count($data_delitos); $i++) {
+                    if(($i%4) == 0){?>
+                        <div class="row"><?php } ?>
+                            <div class="col-md-3">
+                                <div class="card mb-3 border-default btn-peru" style="max-width: 18rem;">
+                                    <div class="card-header border-default">Caso N° <?php echo $i+1; ?></div>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?php echo $data_delitos[$i]['nombre'];?></h5>
+                                        <p class="card-text"><?php echo $data_delitos[$i]['descripcion']; ?></p>
+                                    </div>
+                                    <div class="card-footer border-default">
+                                        <h5 class="card-text">Fecha Registrada:</h5>
+                                        <h5 class="card-text"><?php echo $data_delitos[$i]['fec']; ?></h5>
+                                    </div>
+                                </div>
+                            </div>
+                    <?php if(($i%4) == 3) {?></div>
+            <hr>
+             <?php }} ?>
         <hr>
     </div>
 </section>
