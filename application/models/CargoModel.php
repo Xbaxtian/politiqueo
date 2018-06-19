@@ -36,7 +36,12 @@ class CargoModel extends CI_Model{
                      'periodo'=>$data['periodo'],
                      'tipo_periodo'=>$data['tipoperiodo'])
            );
-           return "success";
+            $this->db->select('max(id_cargo) as id, descripcion as nombre');
+            $this->db->from('cargos');
+            $this->db->where('id_cargo = (select max(id_cargo) from cargos)');
+            $query = $this->db->get();
+            $data_cargo = $query->result_array();
+            return json_encode(array("result"=>"success",'option'=>array("name"=>"cargoP","valor"=>$data_cargo[0]['id'],"opcion"=>$data_cargo[0]['nombre'])));
         }
         catch(Exception $e){
             return "error";

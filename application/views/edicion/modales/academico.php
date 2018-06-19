@@ -3,7 +3,7 @@
             <label for="gradoP" class="col-sm-2 col-form-label">Grado</label>
             <div class="col-sm-7"><?php $title = "Aqui debes elegir el grado academico de pregrado o postgrado del total registrados.\nPor ejemplo: Bachiller, Magister, etc. Según sea el caso.
                                                   \nEn caso de no existir el grado academica en las opciones debes pinchar en el boton de la derecha Añadir Grado para registrarlo."; ?>
-                <select class="form-control" name="gradoP[]" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>" id="sel" >
+                <select class="select-grado form-control" name="gradoP[]" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>" id="sel" >
                   <option name="gradoP[]" value=" ">Grados Academicos</option>
 
                   <?php for ($i=0; $i <count($grados) ; $i++) { ?>
@@ -51,7 +51,7 @@
 
      <script type="text/javascript">
      $(".pop-up").click(function(){
-         var btn = $(this); alert(btn.attr("href"));
+         var btn = $(this);
          $.post(btn.attr("href"), {"idObj":$(this).attr("data-id")},function(data){
              $("#modal-target .modal-content").html("");
              $("#modal-target .modal-content").html(data);

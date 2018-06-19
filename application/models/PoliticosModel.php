@@ -69,7 +69,7 @@ class PoliticosModel extends CI_Model{
           $this->db->select('max(id_politico) as id');
           $this->db->from('politicos');
           $query = $this->db->get();
-          $id = $query->result_array;
+          $id = $query->result_array();
 
           if(isset($data_academica['grado'])){
               for ($i=0; $i < count($data_academica['grado']); $i++) {

@@ -12,10 +12,16 @@ class GradoModel extends CI_Model{
         {
             $this->db->insert('grados_academicos',
             array('nombre'=>$data['nombre']));
-           return "success";
+
+            $this->db->select('max(id_grado) as id, nombre');
+            $this->db->from('grados_academicos');
+            $this->db->where('id_grado = (select max(id_grado) from grados_academicos)');
+            $query = $this->db->get();
+            $data_grado = $query->result_array();
+            return json_encode(array("result"=>"success",'option'=>array("name"=>"gradoP","valor"=>$data_grado[0]['id'],"opcion"=>$data_grado[0]['nombre'])));
         }
         catch(Exception $e){
-            return "error";
+            return json_encode(array("result"=>"error"));
         }
     }
 

@@ -28,7 +28,7 @@ class Grado extends CI_Controller {
 
 			$result = $this->gradoModel->registrargrado($data);
 			header('Content-Type: application/json');
-			echo json_encode(array("result"=>$result));
+			echo $result;
         }
 	}
 
