@@ -69,40 +69,47 @@ class PoliticosModel extends CI_Model{
           $this->db->select('max(id_politico) as id');
           $this->db->from('politicos');
           $query = $this->db->get();
-          $id = $query->result_array();
+          $id = $query->result_array;
 
-          for ($i=0; $i < count($data_academica['grado']); $i++) {
-              $this->db->insert('historial_academico',
-              array('id_politico'=>$id[0]['id'],
-                    'id_grado'=>$data_academica['grado'][$i],
-                    'descripcion'=>$data_academica['carrera'][$i],
-                    'id_usuario'=>$this->session->userdata('id_usuario'),
-                    'fec_modificacion'=>date("Y-m-d"),
-                    'fec_inicio'=>$data_academica['añoinicio'][$i],
-                    'fec_fin'=>$data_academica['añofinal'][$i])
-              );
+          if(isset($data_academica['grado'])){
+              for ($i=0; $i < count($data_academica['grado']); $i++) {
+                  $this->db->insert('historial_academico',
+                  array('id_politico'=>$id[0]['id'],
+                        'id_grado'=>$data_academica['grado'][$i],
+                        'descripcion'=>$data_academica['carrera'][$i],
+                        'id_usuario'=>$this->session->userdata('id_usuario'),
+                        'fec_modificacion'=>date("Y-m-d"),
+                        'fec_inicio'=>$data_academica['añoinicio'][$i],
+                        'fec_fin'=>$data_academica['añofinal'][$i])
+                  );
+              }
           }
 
-          for ($i=0; $i < count($data_cargos['cargo']); $i++) {
-              $this->db->insert('historial_cargos',
-              array('id_politico'=>$id[0]['id'],
-                    'id_cargo'=>$data_cargos['cargo'][$i],
-                    'id_usuario'=>$this->session->userdata('id_usuario'),
-                    'fec_modificacion'=>date("Y-m-d"),
-                    'fec_inicio'=>$data_cargos['añoinicio'][$i],
-                    'fec_fin'=>$data_cargos['añofinal'][$i])
-              );
+          if(isset($data_cargos['cargo'])){
+              for ($i=0; $i < count($data_cargos['cargo']); $i++) {
+                  $this->db->insert('historial_cargos',
+                  array('id_politico'=>$id[0]['id'],
+                        'id_cargo'=>$data_cargos['cargo'][$i],
+                        'id_usuario'=>$this->session->userdata('id_usuario'),
+                        'fec_modificacion'=>date("Y-m-d"),
+                        'fec_inicio'=>$data_cargos['añoinicio'][$i],
+                        'fec_fin'=>$data_cargos['añofinal'][$i])
+                  );
+              }
           }
 
-          for ($i=0; $i < count($data_delitos['delito']); $i++) {
-              $this->db->insert('historial_delictivo',
-              array('id_politico'=>$id[0]['id'],
-                    'id_delito'=>$data_delitos['delito'][$i],
-                    'descripcion'=>$data_delitos['descripcion'][$i],
-                    'fec'=>$data_delitos['fecha'][$i],
-                    'id_usuario'=>$this->session->userdata('id_usuario'),
-                    'fec_modificacion'=>date("Y-m-d"))
-              );
+
+          if(isset($data_delitos['delito'])){
+              for ($i=0; $i < count($data_delitos['delito']); $i++) {
+                  $this->db->insert('historial_delictivo',
+                  array('id_politico'=>$id[0]['id'],
+                        'id_delito'=>$data_delitos['delito'][$i],
+                        'descripcion'=>$data_delitos['descripcion'][$i],
+                        'fec'=>$data_delitos['fecha'][$i],
+                        'id_usuario'=>$this->session->userdata('id_usuario'),
+                        'fec_modificacion'=>date("Y-m-d"))
+                  );
+              }
           }
 
 
@@ -143,44 +150,51 @@ class PoliticosModel extends CI_Model{
             $this->db->where('id_politico', $data['id']);
             $this->db->delete('historial_academico');
 
-            for ($i=0; $i < count($data_academica['grado']); $i++) {
-                $this->db->insert('historial_academico',
-                array('id_politico'=> $data['id'],
-                      'id_grado'=>$data_academica['grado'][$i],
-                      'descripcion'=>$data_academica['carrera'][$i],
-                      'id_usuario'=>$this->session->userdata('id_usuario'),
-                      'fec_modificacion'=>date("Y-m-d"),
-                      'fec_inicio'=>$data_academica['añoinicio'][$i],
-                      'fec_fin'=>$data_academica['añofinal'][$i])
-                );
+
+            if(isset($data_academica['grado'])){
+                for ($i=0; $i < count($data_academica['grado']); $i++) {
+                    $this->db->insert('historial_academico',
+                    array('id_politico'=> $data['id'],
+                          'id_grado'=>$data_academica['grado'][$i],
+                          'descripcion'=>$data_academica['carrera'][$i],
+                          'id_usuario'=>$this->session->userdata('id_usuario'),
+                          'fec_modificacion'=>date("Y-m-d"),
+                          'fec_inicio'=>$data_academica['añoinicio'][$i],
+                          'fec_fin'=>$data_academica['añofinal'][$i])
+                    );
+                }
             }
 
             $this->db->where('id_politico', $data['id']);
             $this->db->delete('historial_cargos');
 
-            for ($i=0; $i < count($data_cargos['cargo']); $i++) {
-                $this->db->insert('historial_cargos',
-                array('id_politico'=> $data['id'],
-                      'id_cargo'=>$data_cargos['cargo'][$i],
-                      'id_usuario'=>$this->session->userdata('id_usuario'),
-                      'fec_modificacion'=>date("Y-m-d"),
-                      'fec_inicio'=>$data_cargos['añoinicio'][$i],
-                      'fec_fin'=>$data_cargos['añofinal'][$i])
-                );
+            if(isset($data_cargos['cargo'])){
+                for ($i=0; $i < count($data_cargos['cargo']); $i++) {
+                    $this->db->insert('historial_cargos',
+                    array('id_politico'=> $data['id'],
+                          'id_cargo'=>$data_cargos['cargo'][$i],
+                          'id_usuario'=>$this->session->userdata('id_usuario'),
+                          'fec_modificacion'=>date("Y-m-d"),
+                          'fec_inicio'=>$data_cargos['añoinicio'][$i],
+                          'fec_fin'=>$data_cargos['añofinal'][$i])
+                    );
+                }
             }
 
             $this->db->where('id_politico', $data['id']);
             $this->db->delete('historial_delictivo');
 
-            for ($i=0; $i < count($data_delitos['delito']); $i++) {
-                $this->db->insert('historial_delictivo',
-                array('id_politico'=>$data['id'],
-                      'id_delito'=>$data_delitos['delito'][$i],
-                      'descripcion'=>$data_delitos['descripcion'][$i],
-                      'fec'=>$data_delitos['fecha'][$i],
-                      'id_usuario'=>$this->session->userdata('id_usuario'),
-                      'fec_modificacion'=>date("Y-m-d"))
-                );
+            if(isset($data_delitos['delito'])){
+                for ($i=0; $i < count($data_delitos['delito']); $i++) {
+                    $this->db->insert('historial_delictivo',
+                    array('id_politico'=>$data['id'],
+                          'id_delito'=>$data_delitos['delito'][$i],
+                          'descripcion'=>$data_delitos['descripcion'][$i],
+                          'fec'=>$data_delitos['fecha'][$i],
+                          'id_usuario'=>$this->session->userdata('id_usuario'),
+                          'fec_modificacion'=>date("Y-m-d"))
+                    );
+                }
             }
 
             if ($this->db->trans_status() === FALSE)

@@ -6,9 +6,11 @@
 	"require": {
 		"php": ">=5.3.7",
 		"ext-mysql": "*"
+		"pdepend/pdepend": "@stable"
 	},
 	"require-dev": {
 		"mikey179/vfsStream": "1.1.*",
 		"phpunit/phpunit": "4.* || 5.*"
 	}
+
 }
