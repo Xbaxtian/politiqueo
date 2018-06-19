@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="form-group row">
                         <label for="edadP" class="col-sm-2 col-form-label">Edad</label>
                         <div class="col-sm-10">
-                        <input type="text" readonly class="form-control" id="edadP" value="<?php echo $diff = abs(date('Y-m-d') - $dataPolitico['fec_nacimiento']);?>">
+                        <input type="text" readonly class="form-control" id="edadP" value="<?php echo $diff = floor((time() - strtotime($dataPolitico['fec_nacimiento']))/(365*24*3600));?>">
                         </div>
                     </div>
                     <div class="form-group row">
