@@ -20,7 +20,7 @@ class Politico extends CI_Controller {
 
 	public function index()
 	{
-        
+
         $resultado = $this->politicosModel->listarTodosAdmin();
 		$data = array("content"=>'edicion/panelpolitico',"dataView"=>array('resultado'=>$resultado));
 		$this->load->view('layoutInicio',$data);
