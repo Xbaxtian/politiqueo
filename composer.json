@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"require": {
 		"php": "5.6.33",
-		"ext-mysql": "*"
+		"ext-mysql": "*",
 		"pdepend/pdepend": "@stable"
 	},
 	"require-dev": {
