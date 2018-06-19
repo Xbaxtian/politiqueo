@@ -3,7 +3,7 @@
         <label for="delitoP" class="col-sm-2 col-form-label">Grado</label>
         <div class="col-sm-7"><?php $title = "Aqui debes elegir el tipo de delito cometido por el político del total registrados.\nPor ejemplo: Lavado de Activos,etc. Según sea el caso.
                                               \nEn caso de no existir el delito en las opciones debes pinchar en el boton de la derecha Añadir Delito para registrarlo."; ?>
-            <select class="form-control" name="delitoP[]" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>" id="sel" >
+            <select class="select-delito form-control" name="delitoP[]" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>" id="sel" >
               <option name="delitoP[]" value=" ">Delitos Registrados</option>
                <?php for ($j=0; $j <count($delitos) ; $j++) { ?>
                       <option name="delitoP[]" value="<?php echo $delitos[$j]['id_delito']; ?>"> <?php echo $delitos[$j]['nombre']; ?> </option>

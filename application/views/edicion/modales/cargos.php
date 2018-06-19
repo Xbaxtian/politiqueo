@@ -3,7 +3,7 @@
         <label for="cargoP" class="col-sm-2 col-form-label">Cargo</label>
         <div class="col-sm-7"><?php $title = "Aqui debes elegir el cargo ocupado por el político del total registrados.\nPor ejemplo: Presidente de la Comision de Ética,etc. Según sea el caso.
                                               \nEn caso de no existir el cargo en las opciones debes pinchar en el boton de la derecha Añadir Cargo para registrarlo."; ?>
-            <select class="form-control" name="cargoP[]"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>" id="sel" >
+            <select class="select-cargo form-control" name="cargoP[]"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>" id="sel" >
               <option name="cargoP[]" value=" ">Cargos Registrados</option>
               <?php for ($i=0; $i <count($cargos) ; $i++) { ?>
                    <option name="cargoP[]" value="<?php echo $cargos[$i]['id_cargo']; ?>"><?php echo $cargos[$i]['descripcion'] ?></option>

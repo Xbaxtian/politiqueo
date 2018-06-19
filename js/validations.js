@@ -8,12 +8,14 @@ $(document).ready(function(){
                 }
                 else {
                     $("#modal-target .modal-content").html(data);
+
                 }
             }).fail(function(){
                 alert( "Error en la red" );
             });
         }
     );
+
 
     $('.send-formp').click(function(){
             var form = $("#form-validadop");

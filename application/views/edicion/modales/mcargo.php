@@ -32,7 +32,25 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn main-color-bg send-form">Guardar</button> <!--send form clase para enviar el formulario form-validado -->
+            <button type="button" class="btn main-color-bg recv-form">Guardar</button> <!--send form clase para enviar el formulario form-validado -->
         </div>
 
-        <script src="<?php echo base_url()."js/validations.js"; ?>"></script>
+        <script>
+        $('.recv-form').click(function(){
+                var form = $("#form-validado");
+                $.post(form.attr('action'), form.serialize(), function(data){
+                    if(data.result == "success"){
+                        $('#modal-pop-up').modal('hide');
+                        $(".select-cargo").append('<option name="'+data.option.name+'[]" value="'+data.option.valor+'">'+data.option.opcion+'</option>');
+                    }
+                    else {
+                        $("#modal-target .modal-content").html(data);
+
+                    }
+                }).fail(function(){
+                    alert( "Error en la red" );
+                });
+            }
+        );
+
+        </script>

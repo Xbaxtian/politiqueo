@@ -34,10 +34,15 @@ class DelitoModel extends CI_Model{
             $this->db->insert('tipo_delito',
             array('nombre'=>$data['nombre']));
 
-           return "success";
+            $this->db->select('max(id_delito) as id, nombre');
+            $this->db->from('tipo_delito');
+            $this->db->where('id_delito = (select max(id_delito) from tipo_delito)');
+            $query = $this->db->get();
+            $data_delito = $query->result_array();
+            return json_encode(array("result"=>"success",'option'=>array("name"=>"delitoP","valor"=>$data_delito[0]['id'],"opcion"=>$data_delito[0]['nombre'])));
         }
         catch(Exception $e){
-            return "error";
+            return json_encode(array("result"=>"error"));
         }
     }
 
