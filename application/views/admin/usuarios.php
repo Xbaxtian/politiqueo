@@ -24,20 +24,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                          <th></th>
                      </tr>
                  </thead>
-                 <tbody class="buscar">
+                 <tbody class="buscar"><?php $title = "Presiona aqui para eliminar este Usuario." ?>
                      <?php for ($i=0; $i <count($resultado) ; $i++) { ?>
                      <tr>
                          <td class="tarjeta"><?php echo $resultado[$i]['nombres']; ?></td>
                          <td class="tarjeta"><?php echo $resultado[$i]['apellidos']; ?></td>
                          <td class="tarjeta"><?php echo $resultado[$i]['correo']; ?></td>
-                         <td class="tarjeta"> <button class="btn pop-up btn-peru" href="usuarios/borrarUsuario" data-id="<?php echo $resultado[$i]['id_usuario']?>" ?>Borrar</button></td>
+                         <td class="tarjeta"> <button class="btn pop-up btn-peru" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>" href="usuarios/borrarUsuario" data-id="<?php echo $resultado[$i]['id_usuario']?>" ?>Borrar</button></td>
                      </tr>
                      <?php } ?>
                  </tbody>
              </table>
-             <div class="row">
-                 <div class="col-md-12">
-                     <button class="btn pop-up main-color-bg float-right" href="usuarios/anadirUsuario">Añadir Usuario</button>
+             <div class="row tarjeta">
+                 <div class="col-md-12"><?php  $title = "Presiona aqui para añadir un nuevo usuario."  ?>
+                     <button class="btn pop-up main-color-bg"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>" href="usuarios/anadirUsuario">Añadir Usuario</button>
                  </div>
              </div>
         </div>

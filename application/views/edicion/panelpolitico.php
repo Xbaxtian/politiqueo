@@ -31,7 +31,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td><?php echo $resultado[$i]['nombres']; ?></td>
                         <td><?php echo $resultado[$i]['apellidos']; ?></td>
                         <td><?php echo $resultado[$i]['nombre']; ?></td>
-                        <td><button class="btn btn-peru pop-upP" href="politico/actualizarpolitico" data-id="<?php echo $resultado[$i]['id_politico']?>">Editar</button></td>
+                        <?php $title = "Presiona aqui para poder Editar lo siguiente:\n\n-Información Personal.\n-Formación Académica\n-Historial de Cargos Públicos\n-Historial de Casos de Corrupción\n\nde este político";?>
+                        <td><button class="btn btn-peru pop-upP" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>" href="politico/actualizarpolitico" data-id="<?php echo $resultado[$i]['id_politico']?>">Editar</button></td>
                         <?php if($resultado[$i]['estado'] == 1) {?>
                         <td><button class="btn btn-peru pop-up" href="politico/borrarpolitico" data-id="<?php echo $resultado[$i]['id_politico']?>">Eliminar</button></td>
                         <?php } ?>

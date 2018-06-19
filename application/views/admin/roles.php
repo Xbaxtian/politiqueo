@@ -14,8 +14,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="card-body">
                         <h2><span aria-hidden="true"></span><?php echo $resultado[$i]['total']; ?> </h2>
                         <h4><?php echo $resultado[$i]['descripcion'];?></h4>
-                        <button class="btn main-color-bg pop-up" data-id="<?php echo $resultado[$i]['id_rol']?>" href="rol/editarRol" data-descripcion="<?php echo $resultado[$i]['descripcion'] ?>" >Editar Rol</button>
-                        <button class="btn btn-peru pop-up" data-id="<?php echo $resultado[$i]['id_rol']?>" href="rol/borrarRol">Eliminar Rol</button>
+                        <?php $title0 = "Presiona aqui para editar el nombre y los modulos asignados de este Rol." ?>
+                        <button class="btn main-color-bg pop-up" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title0; ?>"  data-id="<?php echo $resultado[$i]['id_rol']?>" href="rol/editarRol" data-descripcion="<?php echo $resultado[$i]['descripcion'] ?>" >Editar Rol</button>
+                        <?php $title1 = "Presiona aqui para eliminar este Rol." ?>
+                        <button class="btn btn-peru pop-up" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title1; ?>"  data-id="<?php echo $resultado[$i]['id_rol']?>" href="rol/borrarRol">Eliminar Rol</button>
                 </div>
             </div>
             <?php if((count($resultado)%2)!=0 && (count($resultado)-1)==$i){?>
@@ -30,7 +32,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <?php } } ?>
           <div class="row justify-content-center">
               <div class="col-md-3">
-                  <button class="btn pop-up main-color-bg" href="rol/anadirRol">Añadir Rol</button>
+                  <?php $title = "Presiona aqui para añadir un nuevo Rol." ?>
+                  <button class="btn pop-up main-color-bg" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>" href="rol/anadirRol">Añadir Rol</button>
               </div>
           </div>
       <script type="text/javascript" src="<?php echo base_url()."js/consultas/roles.js";?>"></script>
