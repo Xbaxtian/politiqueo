@@ -11,9 +11,15 @@ class Organos extends CI_Controller{
 
 
     public function index(){
-        $dataPartidos = $this->partidosModel->listarTodos();
-		$data = array("content"=>'organos/organo',"dataView"=>array('dataPartidos'=>$dataPartidos));
-		$this->load->view('layout',$data);
+        if($this->input->get('id')==1){
+            $dataPartidos = $this->partidosModel->listarTodos();
+    		$data = array("content"=>'organos/organo',"dataView"=>array('dataPartidos'=>$dataPartidos));
+    		$this->load->view('layout',$data);
+        }
+        else{
+            $data = array("content"=>'home/construccion',"dataView"=>array('mensaje'=>"página en construcción"));
+    		$this->load->view('layout',$data);
+        }
     }
 
 }
