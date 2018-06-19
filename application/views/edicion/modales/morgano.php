@@ -31,7 +31,8 @@
             <div class="form-group">
                 <label>Descripción</label>
                 <?php
-                $descripcion = array('type'=>'text','placeholder'=>'Descripcion','class'=>'form-control','name'=>'descripcion','value'=>$valuedescripcion);
+                $title = "Aqui debes ingresar una descripcion general de la organización.\nPor ejemplo: Municipalidad de Lima.";
+                $descripcion = array('type'=>'text','data-toggle'=>'tooltip','data-placement'=>'bottom','title'=>$title,'placeholder'=>'Descripcion','class'=>'form-control','name'=>'descripcion','value'=>$valuedescripcion);
                 echo form_input($descripcion);
                 ?>
                 <?php echo form_error('descripcion','<div class="form-error">*', '</div>'); ?>
@@ -39,7 +40,8 @@
             <div class="form-group">
                 <label>Titulo</label>
                 <?php
-                $titulo = array('type'=>'text','name'=> 'titulo','placeholder'=>'Titulo','class'=>'form-control','value'=>$valuetitulo);
+                $title = "Aqui debes ingresar el título del órgano.\nPor ejemplo: Municipio de Lima.";
+                $titulo = array('type'=>'text','data-toggle'=>'tooltip','data-placement'=>'bottom','title'=>$title,'name'=> 'titulo','placeholder'=>'Titulo','class'=>'form-control','value'=>$valuetitulo);
                 echo form_input($titulo);
                 ?>
                 <?php echo form_error('titulo','<div class="form-error">*', '</div>'); ?>
@@ -47,16 +49,17 @@
             <div class="form-group">
                 <label>Imagen o Logo</label>
                 <?php
-                $url = array('type'=>'text','name'=> 'url','placeholder'=>'URL de Imagen','class'=>'form-control','value'=>$valueurl);
+                $title = "Aqui debes ingresar la dirección de la imagen(URL) del logo del órgano.\nPor ejemplo: https://yt3.ggpht.com/a-/ACSszfEOWO_CqeQ10sMdLF-93CTMKi6bV1mJR9UQEQ=s900-mo-c-c0xffffffff-rj-k-no.";
+                $url = array('type'=>'text','data-toggle'=>'tooltip','data-placement'=>'bottom','title'=>$title,'name'=> 'url','placeholder'=>'URL de Imagen','class'=>'form-control','value'=>$valueurl);
                 echo form_input($url);
                 ?>
                 <?php echo form_error('url','<div class="form-error">*', '</div>'); ?>
             </div>
             <?php echo form_close(); ?>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer"><?php $title = "Luego de escribir todos los campos requeridos, presiona para guardar la información."; ?>
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn main-color-bg send-form">Guardar</button> <!--send form clase para enviar el formulario form-validado -->
+            <button type="button" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>" class="btn main-color-bg send-form">Guardar</button>
         </div>
 
 <script src="js/validations.js"></script>

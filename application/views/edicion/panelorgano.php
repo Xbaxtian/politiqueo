@@ -19,7 +19,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <table class="table table-striped table-hover tarjeta">
                 <thead>
                     <tr>
-                        <th>ID Organo</th>
                         <th>Descripción</th>
                         <th>Titulo</th>
                         <th></th>
@@ -29,23 +28,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <tbody class="buscar">
                     <?php for ($i=0; $i <count($resultado) ; $i++) { ?>
                     <tr>
-                        <td><?php echo $resultado[$i]['id_organo']; ?></td>
                         <td><?php echo $resultado[$i]['descripcion']; ?></td>
                         <td><?php echo $resultado[$i]['titulo']; ?></td>
-                        <td><button class="btn pop-up main-color-bg" href="organo/actualizarorgano" data-id="<?php echo $resultado[$i]['id_organo'];?>">Editar</button></td>
-                        <?php if($resultado[$i]['estado'] == 1) {?>
-                        <td><button class="btn btn-peru pop-up" href="organo/borrarorgano" data-id="<?php echo $resultado[$i]['id_organo']?>">Eliminar</button></td>
+                        <?php $title = "Presiona aqui para poder Editar el nombre o la direccion de la Imagen(URL) de este órgano." ?>
+                        <td><button class="btn pop-up main-color-bg" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>" href="organo/actualizarorgano" data-id="<?php echo $resultado[$i]['id_organo'];?>">Editar</button></td>
+                        <?php
+                            $title = "Presiona aqui para ocultar este órgano.";
+                            if($resultado[$i]['estado'] == 1) {?>
+                        <td><button class="btn btn-peru pop-up" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>" href="organo/borrarorgano" data-id="<?php echo $resultado[$i]['id_organo']?>">Eliminar</button></td>
                         <?php } ?>
-                        <?php if($resultado[$i]['estado'] == 0) {?>
-                        <td><button class="btn btn-success pop-up" href="organo/activarorgano" data-id="<?php echo $resultado[$i]['id_organo']?>">Activar</button></td>
+                        <?php
+                            $title = "Presiona aqui para mostrar este órgano.";
+                            if($resultado[$i]['estado'] == 0) {?>
+                        <td><button class="btn btn-success pop-up" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>" href="organo/activarorgano" data-id="<?php echo $resultado[$i]['id_organo']?>">Activar</button></td>
                         <?php } ?>
                     </tr>
                     <?php } ?>
                 </tbody>
             </table>
             <div class="row tarjeta">
-                <div class="col-md-12">
-                <button class="btn pop-up main-color-bg" href="organo/anadirorgano">Añadir Organo</button>
+                <div class="col-md-12"><?php $title = "Presiona aqui para añadir un órgano.\nPor ejemplo: Municipio de Lima,etc." ?>
+                <button class="btn pop-up main-color-bg" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>" href="organo/anadirorgano">Añadir Organo</button>
                 </div>
             </div>
         </div>

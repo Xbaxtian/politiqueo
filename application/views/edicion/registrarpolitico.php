@@ -60,7 +60,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <label for="imagenP" class="col-sm-2 col-form-label">Imagen</label>
                             <div class="col-sm-10">
                             <?php
-                            $url = array('type'=>'text','class'=>'form-control','name'=>'imagenP','id'=>'url','placeholder'=>'URL de imagen', 'value' => $valueimagen );
+                            $title = "Aqui debes ingresar la direccion de la imagen(URL) relacionada a este politico
+                                     \nPor ejemplo: https://upload.wikimedia.org/wikipedia/commons/f/f9/Mart%C3%ADn_Vizcarra_Cornejo_%28cropped%29_%28cropped%29.png
+                                      \nAsegurate de escribir el link correctamente";
+                            $url = array('type'=>'text','data-toggle'=>'tooltip','data-placement'=>'bottom','title'=>$title,'class'=>'form-control','name'=>'imagenP','id'=>'url','placeholder'=>'URL de imagen', 'value' => $valueimagen );
                             echo form_input($url);
                             ?>
                             <?php echo form_error('imagenP','<div class="form-error">*', '</div>'); ?>
@@ -70,7 +73,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <label for="nombreP" class="col-sm-2 col-form-label">Nombres</label>
                             <div class="col-sm-10">
                             <?php
-                            $nombre = array('type'=>'text','class'=>'form-control','name'=>'nombreP','placeholder'=>'Nombre', 'value'=>$valuenombre);
+                            $title = "Aqui debes ingresar el o los nombre(s) del politico\nPor ejemplo: Martin Alberto";
+                            $nombre = array('type'=>'text','data-toggle'=>'tooltip','data-placement'=>'bottom','title'=>$title,'class'=>'form-control','name'=>'nombreP','placeholder'=>'Nombre', 'value'=>$valuenombre);
                             echo form_input($nombre);
                             ?>
                             <?php echo form_error('nombreP','<div class="form-error">*', '</div>'); ?>
@@ -80,7 +84,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <label for="nombreP" class="col-sm-2 col-form-label">Apellidos</label>
                             <div class="col-sm-10">
                             <?php
-                            $apellidos = array('type'=>'text','class'=>'form-control','name'=>'apellidoP','placeholder'=>'Apellidos','value'=>$valueapellido);
+                            $title = "Aqui debes ingresar los apellidos del politico\nPor ejemplo: Vizcarra Cornejo";
+                            $apellidos = array('type'=>'text','data-toggle'=>'tooltip','data-placement'=>'bottom','title'=>$title,'class'=>'form-control','name'=>'apellidoP','placeholder'=>'Apellidos','value'=>$valueapellido);
                             echo form_input($apellidos);
                             ?>
                             <?php echo form_error('apellidoP','<div class="form-error">*', '</div>'); ?>
@@ -90,7 +95,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <label for="edadP" class="col-sm-2 col-form-label">Año de Nacimiento</label>
                             <div class="col-sm-10">
                             <?php
-                            $edad = array('type'=>'date','class'=>'form-control','name'=>'edadP','placeholder'=>'Edad','value'=>$valuefecnacimiento);
+                            $title = "Aqui debes ingresar la fecha de nacimiento del politico\nPor ejemplo: 22/03/1963";
+                            $edad = array('type'=>'date','data-toggle'=>'tooltip','data-placement'=>'bottom','title'=>$title,'class'=>'form-control','name'=>'edadP','placeholder'=>'Edad','value'=>$valuefecnacimiento);
                             echo form_input($edad);
                             ?>
                             <?php echo form_error('edadP','<div class="form-error">*', '</div>'); ?>
@@ -100,7 +106,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <label for="dniP" class="col-sm-2 col-form-label">DNI</label>
                             <div class="col-sm-10">
                             <?php
-                            $dni = array('type'=>'text','class'=>'form-control','name'=>'dniP','placeholder'=>'Documento Nacional de Identidad','value'=>$valuedni);
+                            $title = "Aqui debes ingresar el número de DNI del politico\nPor ejemplo: 04412417
+                                      \n Asegurate de que contenga 8 digitos";
+                            $dni = array('type'=>'text','data-toggle'=>'tooltip','data-placement'=>'bottom','title'=>$title,'class'=>'form-control','name'=>'dniP','placeholder'=>'Documento Nacional de Identidad','value'=>$valuedni);
                             echo form_input($dni);
                             ?>
                             <?php echo form_error('dniP','<div class="form-error">*', '</div>'); ?>
@@ -108,8 +116,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class="form-group row">
                             <label for="sel" class="col-sm-2 col-form-label">Bancada</label>
-                            <div class="col-sm-7">
-                                <select class="form-control" name="bancadaP" id="sel" >
+                            <div class="col-sm-7"><?php $title = "Aqui debes elegir el partido político del total registrado al que pertenece.\nPor ejemplo: Peruanos por el cambio.\nEn caso de no pertenecer a ninguno sera No Alineados.
+                                                                  \nEn caso de pertenecer a un partido y no aparezca en las opciones debes pinchar en el boton de la derecha Añadir Partido para registrarlo.";?>
+                                <select class="form-control"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>"  name="bancadaP" id="sel" >
                                   <option name="bancadaP" value="<?php if(isset($resultado)){ echo $partidopolitico[0]['id_partido']; }else{ echo " ";}?>"> <?php if(isset($resultado)){ echo $partidopolitico[0]['nombre']; }else{ echo "Partidos";} ?></option>
                                   <?php for ($i=0; $i <count($partidos) ; $i++) { if(isset($resultado)){ if($partidopolitico[0]['id_partido'] != $partidos[$i]['id_partido'] ){?>
                                        <option name="bancadaP" value="<?php echo $partidos[$i]['id_partido']; ?>"> <?php echo $partidos[$i]['nombre'] ?> </option>
@@ -121,15 +130,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </select>
                             <?php echo form_error('bancadaP','<div class="form-error">*', '</div>'); ?>
                             </div>
-                            <div class="col-sm-3 align-self-center ">
-                            <button type="button" class="btn btn-peru pop-up btn-sm" href="partido/anadirpartido">Añadir Partido</button>
+                            <div class="col-sm-3 align-self-center "><?php  $title = "Presiona aqui para añadir un nuevo partido político.";?>
+                            <button type="button" class="btn btn-peru pop-up btn-sm" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>" href="partido/anadirpartido">Añadir Partido</button>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="representaP" class="col-sm-2 col-form-label">Representa</label>
                             <div class="col-sm-10">
                             <?php
-                            $representa = array('type'=>'text','class'=>'form-control','name'=>'representaP','placeholder'=>'Lugar al que representa','value'=>$valuerepresenta);
+                            $title = "Aquí debes ingresar la region, si es que el cargo lo demanda, a la que representa el politico.";
+                            $representa = array('type'=>'text','data-toggle'=>'tooltip','data-placement'=>'bottom','title'=>$title,'class'=>'form-control','name'=>'representaP','placeholder'=>'Lugar al que representa','value'=>$valuerepresenta);
                             echo form_input($representa);
                             ?>
                             <?php echo form_error('representaP','<div class="form-error">*', '</div>'); ?>
@@ -139,7 +149,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <label for="condicionP" class="col-sm-2 col-form-label">Condicion</label>
                             <div class="col-sm-10">
                             <?php
-                            $condicion = array('type'=>'text','class'=>'form-control','name'=>'condicionP','placeholder'=>'Condicion','value'=>$valuecondicion);
+                            $title = "Aquí debes ingresar el estado en el que es encuentra el político.\nPuede ser Activo,Inactivo o Suspendido según sea el caso.";
+                            $condicion = array('type'=>'text','data-toggle'=>'tooltip','data-placement'=>'bottom','title'=>$title,'class'=>'form-control','name'=>'condicionP','placeholder'=>'Condicion','value'=>$valuecondicion);
                             echo form_input($condicion);
                             ?>
                             <?php echo form_error('condicionP','<div class="form-error">*', '</div>'); ?>
@@ -203,8 +214,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         } ?>
                             <div class='form-group' id='formacademico'></div>
                             <div class="form-group row tarjeta justify-content-center">
-                                <div class="col-sm-10">
-                                <button type="button" href="politico/agregaracademico" class="btn pop-upaca main-color-bg">Agregar Historial Academico</button>
+                                <div class="col-sm-10"><?php $title = "Si el político tiene estudios registrados, presiona aqui para guardar esa información." ?>
+                                <button type="button" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>"  href="politico/agregaracademico" class="btn pop-upaca main-color-bg">Agregar Historial Academico</button>
                                 </div>
                             </div>
                         <?php }
@@ -212,8 +223,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="form-group" id="formacademico">
                         </div>
                          <div class="form-group row tarjeta justify-content-center">
-                             <div class="col-sm-10">
-                             <button type="button" class="btn main-color-bg pop-upaca" href="politico/agregaracademico">Agregar Historial Academico</button>
+                             <div class="col-sm-10"><?php $title = "Si el político tiene estudios registrados, presiona aqui para guardar esa información." ?>
+                             <button type="button" class="btn main-color-bg pop-upaca" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>" href="politico/agregaracademico">Agregar Historial Academico</button>
                              </div>
                          </div>
                         <?php } ?>
@@ -266,8 +277,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="form-group" id="formcargos">
                             </div>
                             <div class="form-group row tarjeta justify-content-center">
-                                <div class="col-sm-10">
-                                <button type="button" href="politico/agregarcargo" class="btn pop-upcar main-color-bg">Agregar Cargo Ocupado</button>
+                                <div class="col-sm-10"><?php $title = "Si el político ha ocupado algun cargo, presiona aqui para guardar esa información." ?>
+                                <button type="button"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>"  href="politico/agregarcargo" class="btn pop-upcar main-color-bg">Agregar Cargo Ocupado</button>
                                 </div>
                             </div>
                         <?php }
@@ -275,8 +286,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="form-group" id="formcargos">
                             </div>
                              <div class="form-group row tarjeta justify-content-center">
-                                 <div class="col-sm-10">
-                                 <button type="button" href="politico/agregarcargo" class="btn main-color-bg pop-upcar">Agregar Cargo Ocupado</button>
+                                 <div class="col-sm-10"><?php $title = "Si el político ha ocupado algun cargo, presiona aqui para guardar esa información." ?>
+                                 <button type="button"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>"  href="politico/agregarcargo" class="btn main-color-bg pop-upcar">Agregar Cargo Ocupado</button>
                                  </div>
                              </div>
                         <?php } ?>
@@ -329,24 +340,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             ?>
                             <div class="form-group" id="formdelitos"></div>
                             <div class="form-group row tarjeta justify-content-center">
-                                <div class="col-sm-10">
-                                <button type="button" href="politico/agregardelito" class="btn pop-updel main-color-bg">Agregar Caso Implicado</button>
+                                <div class="col-sm-10"><?php $title = "Si el político registra un hecho de corrupción, presiona aqui para guardar esa información." ?>
+                                <button type="button" href="politico/agregardelito" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>" class="btn pop-updel main-color-bg">Agregar Caso Implicado</button>
                                 </div>
                             </div>
                          <?php }
                           else{?>
                               <div class="form-group" id="formdelitos"></div>
                                <div class="form-group row tarjeta justify-content-center">
-                                   <div class="col-sm-10">
-                                   <button  type="button" href="politico/agregardelito" class="btn pop-updel main-color-bg">Agregar Caso Implicado</button>
+                                   <div class="col-sm-10"><?php $title = "Si el político registra un hecho de corrupción, presiona aqui para guardar esa información." ?>
+                                   <button  type="button" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>" href="politico/agregardelito" class="btn pop-updel main-color-bg">Agregar Caso Implicado</button>
                                    </div>
                                </div>
 
                           <?php } ?>
                         <?php echo form_close(); ?>
                         <div class="form-group row tarjeta justify-content-center">
-                            <div class="col-sm-10">
-                            <button class="btn btn-peru send-formp">Guardar</button>
+                            <div class="col-sm-10"><?php $title = "Despues de completar toda la información requerida, debes presionar para guardarla y sea mostrada." ?>
+                            <button class="btn btn-peru send-formp" data-toggle="tooltip" data-placement="bottom" title="<?php echo $title; ?>">Guardar</button>
                             </div>
                         </div>
                     <script src=<?php echo base_url()."js/validations.js";?>></script>

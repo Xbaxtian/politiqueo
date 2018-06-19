@@ -17,7 +17,8 @@ class PoliticosModel extends CI_Model{
 
     public function listarTodosAdmin(){
         $this->db->select('*');
-        $this->db->from('politicos');
+        $this->db->from('politicos pol');
+        $this->db->join('partidos par','pol.id_partido=par.id_partido');
         $query = $this->db->get();
         return $query->result_array();
     }

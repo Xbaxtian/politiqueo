@@ -19,7 +19,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <table class="table table-striped table-hover tarjeta">
                 <thead>
                     <tr>
-                        <th>ID Partido</th>
                         <th>Nombre</th>
                         <th></th>
                         <th></th>
@@ -28,13 +27,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <tbody class="buscar">
                     <?php for ($i=0; $i <count($resultado) ; $i++) { ?>
                     <tr>
-                        <td><?php echo $resultado[$i]['id_partido']; ?></td>
                         <td><?php echo $resultado[$i]['nombre']; ?></td>
                         <td><button class="btn btn-peru pop-up" href="partido/actualizarpartido" data-id="<?php echo $resultado[$i]['id_partido']?>">Editar</button></td>
-                        <?php if($resultado[$i]['estado'] == 1) {?>
+                        <?php if($resultado[$i]['estadop'] == 1) {?>
                         <td><button class="btn btn-peru pop-up" href="partido/borrarpartido" data-id="<?php echo $resultado[$i]['id_partido']?>">Eliminar</button></td>
                         <?php } ?>
-                        <?php if($resultado[$i]['estado'] == 0) {?>
+                        <?php if($resultado[$i]['estadop'] == 0) {?>
                         <td><button class="btn btn-success pop-up" href="partido/activarpartido" data-id="<?php echo $resultado[$i]['id_partido']?>">Activar</button></td>
                         <?php } ?>
                     </tr>

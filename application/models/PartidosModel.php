@@ -10,13 +10,13 @@ class PartidosModel extends CI_Model{
     public function listarTodos(){
         $this->db->select('*');
         $this->db->from('partidos');
-        $this->db->where('estado = 1');
+        $this->db->where('estadop = 1');
         $query = $this->db->get();
         return $query->result_array();
     }
 
     public function listarTodosAdmin(){
-        $this->db->select('id_partido,nombre');
+        $this->db->select('*');
         $this->db->from('partidos');
         $query = $this->db->get();
         return $query->result_array();
@@ -34,7 +34,7 @@ class PartidosModel extends CI_Model{
         $this->db->select('*');
         $this->db->from('partidos');
         $this->db->where('id_partido = '.$id_partido);
-        $this->db->where('estado = 1');
+        $this->db->where('estadop = 1');
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -45,7 +45,7 @@ class PartidosModel extends CI_Model{
             $this->db->insert('partidos',
             array('nombre'=>$data['nombre'],
                      'imagen'=>$data['url'],
-                     'estado'=>1)
+                     'estadop'=>1)
            );
            return "success";
         }
@@ -58,7 +58,7 @@ class PartidosModel extends CI_Model{
         $this->db->select('id_partido,nombre');
         $this->db->from('partidos');
         $this->db->where('id_partido ='.$id);
-        $this->db->where('estado = 1');
+        $this->db->where('estadop = 1');
         $query = $this->db->get();
         $result = $query->result_array();
 
@@ -84,7 +84,7 @@ class PartidosModel extends CI_Model{
     public function borrarpartido($id){
         try
         {
-            $this->db->set('estado', 0);
+            $this->db->set('estadop', 0);
             $this->db->where('id_partido', $id);
             $this->db->update('partidos');
             return "success";
@@ -96,7 +96,7 @@ class PartidosModel extends CI_Model{
 
     public function activarpartido($id){
         try {
-            $this->db->set('estado', 1);
+            $this->db->set('estadop', 1);
             $this->db->where('id_partido', $id);
             $this->db->update('partidos');
 
