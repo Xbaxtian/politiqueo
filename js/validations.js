@@ -32,4 +32,23 @@ $(document).ready(function(){
             });
         }
     );
+
+    $('.send-formlogin').click(function(){
+            var form = $("#form-validado");
+            $.post(form.attr('action'), form.serialize(), function(data){
+                if(data.result == "success"){
+                    location.replace(data.dir);
+                }
+                else if(data.result == 'fail'){
+                    $("#error").text(data.msj);
+                }
+                else{
+                    $("#main-content").html("");
+                    $("#main-content").html(data);
+                }
+            }).fail(function(){
+                alert( "Error en la red" );
+            });
+        }
+    );
 });

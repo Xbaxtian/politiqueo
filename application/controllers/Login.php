@@ -18,17 +18,32 @@ class Login extends CI_Controller{
     }
 
     public function acceso(){
-        $data = array('email' => $this->input->post('email'),
-                      'pass' => $this->input->post('pass'));
-        $this->load->model('loginModel');
-        $resultado = $this->loginModel->getUsuario($data);
-        $resultado = $resultado[0];
-        if($resultado != false){
-            $this->session->set_userdata($resultado);
-            redirect('admin');
+
+        $this->form_validation->set_rules("email", "Email", "required");
+        $this->form_validation->set_rules("pass", "contraseña", "required");
+
+		if ($this->form_validation->run() == FALSE)
+        {
+			$this->load->view("admin/login");
         }
-        else{
-            redirect('Login');
+        else
+        {
+            $data = array('email' => $this->input->post('email'),
+                          'pass' => $this->input->post('pass'));
+            $this->load->model('loginModel');
+            $resultado = $this->loginModel->getUsuario($data);
+            $resultado = $resultado[0];
+            if($resultado != false){
+                $this->session->set_userdata($resultado);
+                $result = array("result"=>"success",'dir'=>base_url()."admin");
+    			header('Content-Type: application/json');
+    			echo json_encode($result);
+            }
+            else{
+                $result = array('result'=>'fail','msj'=>"Los datos ingresados no son correctos, Por favor vuelve a intertarlo.");
+                header('Content-Type: application/json');
+    			echo json_encode($result);;
+            }
         }
     }
 

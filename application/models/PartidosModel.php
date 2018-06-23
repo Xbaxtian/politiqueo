@@ -55,7 +55,7 @@ class PartidosModel extends CI_Model{
     }
 
     public function obtenerpartido($id){
-        $this->db->select('id_partido,nombre');
+        $this->db->select('*');
         $this->db->from('partidos');
         $this->db->where('id_partido ='.$id);
         $this->db->where('estadop = 1');
