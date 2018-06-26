@@ -26,9 +26,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="col-md-8 offset-md-4">
                                 <div class="input-group">
                                     <input type="text" class="form-control busca" placeholder="Busca tu politico..">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-secondary" type="submit">Go!</button>
-                                    </span>
                                     <div id="display"></div>
                                 </div>
                             </div>

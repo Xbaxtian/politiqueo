@@ -52,10 +52,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <?php
             if(isset($data_academica)){
                 for ($i=0; $i < count($data_academica); $i++) {?>
-                <table class="table tarjeta table-sm">
+                <table class="table  table-sm">
                     <thead class="btn-peru">
                         <tr>
-                            <th>Estudios </th>
+                            <th>Estudios</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -80,7 +80,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </table>
                 <hr>
             <?php }
-            } ?>
+        }else{?>
+            <div class="col-12 tarjeta">
+                <h4>No registra formación académica</h4>
+            </div>
+        <?php } ?>
         </div>
         <hr>
         <div class="row">
@@ -88,11 +92,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <?php
             if(isset($data_cargos)){
                 for ($i=0; $i < count($data_cargos); $i++) {?>
-                <table class="table tarjeta table-sm">
+                <table class="table table-sm">
                     <thead class="btn-peru">
                         <tr>
-                            <th>Cargo Ocupado</th>
                             <th></th>
+                            <th>Cargo Ocupado</th>
                         </tr>
                     </thead>
                     <tbody >
@@ -112,7 +116,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </table>
                 <hr>
             <?php }
-            } ?>
+            }else{?>
+                <div class="col-12 tarjeta">
+                    <h4>No registra historial de cargos</h4>
+                </div>
+            <?php } ?>
         </div>
         <hr>
         <div class="row">
@@ -140,7 +148,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <hr>
          <?php }
             }
-         } ?>
+         }else{?>
+             <div class="col-12 tarjeta">
+                 <h4>No registra casos de corrupción</h4>
+             </div>
+         <?php } ?>
         <hr>
     </div>
 </section>

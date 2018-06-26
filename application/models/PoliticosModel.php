@@ -244,6 +244,7 @@ class PoliticosModel extends CI_Model{
        $this->db->from('politicos');
        $this->db->like('nombres', $palabra);
        $this->db->or_like('apellidos', $palabra);
+       $this->db->where('estado = 1');
        $query = $this->db->get();
        $resultado = $query->result_array();
        return $resultado;
