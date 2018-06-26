@@ -8,6 +8,9 @@ class Partidos extends CI_Controller{
     }
 
     public function index(){
+        if($this->input->get('id_partido') == ""){
+            redirect(base_url());
+        }
         $id_partido = $this->input->get('id_partido');
         $listaPoliticos = $this->partidosModel->listarPoliticos($id_partido);
         $nombrePartido = $this->partidosModel->getNombre($id_partido);

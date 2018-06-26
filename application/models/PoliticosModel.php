@@ -238,29 +238,15 @@ class PoliticosModel extends CI_Model{
 
     }
 
-    /*public function listargrados(){
-        $this->db->select('*');
-        $this->db->from('grados_academicos');
-        $query = $this->db->get();
-        return $query->result_array();
-*/
-    /*public function listar()
-    {   $this->db->select('max(id_politico) as id');
-        $this->db->from('politicos');
-        $query = $this->db->get();
-        $id = $query->result_array();
-
-        $this->db->select('*');
-        $this->db->from('historial_academico ha');
-        $this->db->join('grados_academicos ga','ha.id_grado = ga.id_grado');
-        $this->db->where('id_politico = '.$id[0]['id']);
-        $query = $this->db->get();
-        $result = $query->result_array();
-        if(count($result)>0){
-            return $result;
-        }
-    }*/
-
-
+    public function filtrarpoliticos($palabra)
+   {
+       $this->db->select('*');
+       $this->db->from('politicos');
+       $this->db->like('nombres', $palabra);
+       $this->db->or_like('apellidos', $palabra);
+       $query = $this->db->get();
+       $resultado = $query->result_array();
+       return $resultado;
+   }
 
 }

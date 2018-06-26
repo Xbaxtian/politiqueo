@@ -14,6 +14,9 @@ class Politicos extends CI_Controller {
 
 	public function index()
 	{
+		if( $this->input->get('id') == ""){
+			redirect(base_url());
+		}
 		$id_politico = $this->input->get('id');
 		$data_academica = $this->gradoModel->obtenerestudios($id_politico);
 		$data_cargos = $this->cargoModel->obtenercargo($id_politico);
