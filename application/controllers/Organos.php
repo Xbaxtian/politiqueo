@@ -11,6 +11,9 @@ class Organos extends CI_Controller{
 
 
     public function index(){
+        if($this->input->get('id') == ""){
+            redirect(base_url());
+        }
         if($this->input->get('id')==1){
             $dataPartidos = $this->partidosModel->listarTodos();
     		$data = array("content"=>'organos/organo',"dataView"=>array('dataPartidos'=>$dataPartidos));

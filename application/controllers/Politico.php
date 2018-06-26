@@ -11,11 +11,6 @@ class Politico extends CI_Controller {
         $this->load->model('gradoModel');
         $this->load->model('delitoModel');
         $this->load->helper('modulo');
-
-        if(!$this->session->userdata('id_usuario')){
-            $this->session->sess_destroy();
-            redirect('login');
-        }
     }
 
 	public function index()
@@ -206,5 +201,14 @@ class Politico extends CI_Controller {
         $result = $this->politicosModel->borrarpolitico($id);
         header('Content-Type: application/json');
 		echo json_encode(array("result"=>$result));
+    }
+
+    public function filtrar()
+    {
+        $result = $this->politicosModel->filtrarpoliticos($this->input->post('palabra'));
+        $data=array('result'=>'success','filtrar'=>$result);
+        $this->load->view("politicos/buscapolitico",$data);
+        /*header('Content-Type: application/json');
+		echo json_encode($data);*/
     }
 }

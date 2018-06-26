@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="buscar">
                     <?php for ($i=0; $i <count($resultado) ; $i++) { ?>
                     <tr>
                         <td><?php echo $resultado[$i]['nombres']; ?></td>

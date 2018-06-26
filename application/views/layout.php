@@ -11,6 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
          <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
          <link rel="stylesheet" href="<?php echo base_url()?>css/style-layout.css">
+         <link rel="stylesheet" href="<?php echo base_url()?>css/style-buscapolitico.css">
      </head>
      <body>
          <script src="<?php echo base_url()?>js/libraries/jquery-3.3.1.min.js"></script>
@@ -21,13 +22,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <h1><a class="home-link" href="<?php echo base_url()?>">POLITIQUEO</a></h1>
                     </div>
                     <div class="col-md-6">
-                        <form class="search-form">
+                        <form class="search-form" method="post" action="<?php echo base_url()."politico/filtrar" ?>">
                             <div class="col-md-8 offset-md-4">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Busca tu politico..">
+                                    <input type="text" class="form-control busca" placeholder="Busca tu politico..">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-secondary" type="button">Go!</button>
+                                        <button class="btn btn-secondary" type="submit">Go!</button>
                                     </span>
+                                    <div id="display"></div>
                                 </div>
                             </div>
                         </form>
@@ -54,3 +56,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </footer>
      </body>
  </html>
+ <script>
+    $(".busca").keyup(function(e){
+
+        var texto = $(".busca").val();
+        if(texto != ''){
+            $.post("<?php echo base_url()?>politico/filtrar", {'palabra' : texto }, function(data){
+                $("#display").html("");
+                $("#display").html(data).show();
+            }).fail(function(){
+                alert( "Error en la red" );
+            });
+        }
+        else{
+          $("#display").html("");
+        }
+    })
+</script>
