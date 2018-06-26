@@ -20,31 +20,106 @@
             <label>Modulos Asignados</label><br>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <?php $modulos = getModulos();
-                for ($i=0; $i < count($modulos); $i++) {
-                    if(($i % 3) == 0){ ?>
+		<div class="row">
+			<div class="col-md-6">
+				<?php
+				$modulos = getModulos();
+				$aux = count($modulos);
+				for ($i=0; $i < $aux; $i++) {
+					if($i <= ($aux/2)){?>
+						<div class="row">
+							<div class="col-md-8"><?= $modulos[$i]['nombre'];?></div>
+							<label class="switch">
+							<?php
+							$checkbox = array('type'=>'checkbox','name'=> 'modulos[]','id'=>'modulos','value'=>$modulos[$i]['id_modulo']);
+							if(isset($dataRol)){
+								if($dataRol['modulos'][$i]['asignado'] == 1){
+									$checkbox['checked'] = '';
+								}
+							}
+							echo form_input($checkbox);
+							?>
+							<span class="slider round"></span>
+							</label>
+						</div>
+					<?php
+					}
+					else {
+						if($i-$aux/2 <= 1 && $i-$aux/2 >= 0){?>
+						</div>
+						<div class="col-md-6">
+						<?php
+						}?>
+						<div class="row">
+							<div class="col-md-8"><?= $modulos[$i]['nombre'];?></div>
+							<label class="switch">
+							<?php
+							$checkbox = array('type'=>'checkbox','name'=> 'modulos[]','id'=>'modulos','value'=>$modulos[$i]['id_modulo']);
+							if(isset($dataRol)){
+								if($dataRol['modulos'][$i]['asignado'] == 1){
+									$checkbox['checked'] = '';
+								}
+							}
+							echo form_input($checkbox);
+							?>
+							<span class="slider round"></span>
+							</label>
+						</div>
+					<?php
+					}
+				}
+				?>
+			</div>
+			<div class="col-md-6">
 
-                    <?php }  ?>
-                    <label class="">
-                    <?php echo $modulos[$i]['nombre'];
-                    $checkbox = array('type'=>'checkbox','name'=> 'modulos[]','id'=>'modulos','value'=>$modulos[$i]['id_modulo']);
-                    if(isset($dataRol)){
-                        if($dataRol['modulos'][$i]['asignado'] == 1){
-                            $checkbox['checked'] = '';
-                        }
-                    }
-                    echo form_input($checkbox);
-                    ?>
-                    </label>&nbsp
-                    <?php if(($i % 3) == 2){?>
-                        </div>
-                    <?php } ?>
-                <?php } ?>
-            </div>
-            <?php echo form_error('modulos[]','<div class="form-error">*', '</div>'); ?>
-        </div>
+			</div>
+		</div>
+			<?/*php
+			$modulos = getModulos();
+			for ($i=0; $i < count($modulos); $i++) {?>
+				<div class="row">
+					<div class="col-md-6">
+					<?php
+					if($i <= $i/2){ ?>
+						<label class="switch float-right">
+						<?php
+						echo $modulos[$i]['nombre'];
+						$checkbox = array('type'=>'checkbox','name'=> 'modulos[]','id'=>'modulos','value'=>$modulos[$i]['id_modulo']);
+						if(isset($dataRol)){
+							if($dataRol['modulos'][$i]['asignado'] == 1){
+								$checkbox['checked'] = '';
+							}
+						}
+						echo form_input($checkbox);
+						?>
+						<span class="slider round"></span>
+						</label>&nbsp
+					<?php }  ?>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+					<?php
+					else {?>
+						<label class="switch float-right">
+						<?php
+						echo $modulos[$i]['nombre'];
+						$checkbox = array('type'=>'checkbox','name'=> 'modulos[]','id'=>'modulos','value'=>$modulos[$i]['id_modulo']);
+						if(isset($dataRol)){
+							if($dataRol['modulos'][$i]['asignado'] == 1){
+								$checkbox['checked'] = '';
+							}
+						}
+						echo form_input($checkbox);
+						?>
+						<span class="slider round"></span>
+						</label>&nbsp
+					<?php } ?>
+					</div>
+				</div>
+			<?php }?>
+
+            <?php echo form_error('modulos[]','<div class="form-error">*', '</div>'); */?>
     </div>
     <?php echo form_close(); ?>
 </div>
