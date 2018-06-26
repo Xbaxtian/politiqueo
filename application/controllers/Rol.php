@@ -37,7 +37,12 @@ class Rol extends CI_Controller {
 		$this->form_validation->set_rules("modulos[]", "Modulos", "required");
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->editarRol();
+			if($this->input->get('id_rol') !== null){
+				$this->editarRol();
+			}
+			else {
+				$this->anadirRol();
+			}
 		}
 		else{
 			$data_rol = array('descripcion'=>$this->input->post('descripcion'));

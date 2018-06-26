@@ -70,56 +70,8 @@
 				}
 				?>
 			</div>
-			<div class="col-md-6">
-
-			</div>
 		</div>
-			<?/*php
-			$modulos = getModulos();
-			for ($i=0; $i < count($modulos); $i++) {?>
-				<div class="row">
-					<div class="col-md-6">
-					<?php
-					if($i <= $i/2){ ?>
-						<label class="switch float-right">
-						<?php
-						echo $modulos[$i]['nombre'];
-						$checkbox = array('type'=>'checkbox','name'=> 'modulos[]','id'=>'modulos','value'=>$modulos[$i]['id_modulo']);
-						if(isset($dataRol)){
-							if($dataRol['modulos'][$i]['asignado'] == 1){
-								$checkbox['checked'] = '';
-							}
-						}
-						echo form_input($checkbox);
-						?>
-						<span class="slider round"></span>
-						</label>&nbsp
-					<?php }  ?>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6">
-					<?php
-					else {?>
-						<label class="switch float-right">
-						<?php
-						echo $modulos[$i]['nombre'];
-						$checkbox = array('type'=>'checkbox','name'=> 'modulos[]','id'=>'modulos','value'=>$modulos[$i]['id_modulo']);
-						if(isset($dataRol)){
-							if($dataRol['modulos'][$i]['asignado'] == 1){
-								$checkbox['checked'] = '';
-							}
-						}
-						echo form_input($checkbox);
-						?>
-						<span class="slider round"></span>
-						</label>&nbsp
-					<?php } ?>
-					</div>
-				</div>
-			<?php }?>
-
-            <?php echo form_error('modulos[]','<div class="form-error">*', '</div>'); */?>
+		<?php echo form_error('modulos[]','<div class="form-error">*', '</div>');?>
     </div>
     <?php echo form_close(); ?>
 </div>
