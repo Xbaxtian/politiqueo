@@ -13,4 +13,8 @@ class Home extends CI_Controller {
 		$data = array("content"=>'home/home',"dataView"=>array('dataOrganos'=>$dataOrganos));
 		$this->load->view('layout',$data);
 	}
+
+	public function quieroContribuir(){
+		$this->load->view('home/contribuir');
+	}
 }

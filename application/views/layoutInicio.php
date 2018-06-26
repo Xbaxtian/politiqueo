@@ -12,7 +12,7 @@ if(!$this->session->userdata('id_usuario')){
          <meta charset="utf-8">
          <meta name="viewport" content="width=device-width, initial-scale=1.0">
          <title>Politiqueo</title>
-         <link rel="icon" href="img/icon-peru.png">
+         <link rel="icon" href="<?=base_url()?>img/icon-peru.png">
          <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
          <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
          <link rel="stylesheet" href="<?php echo base_url()?>css/style-layout.css">
