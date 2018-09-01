@@ -10,8 +10,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          <link rel="icon" href="<?=base_url()?>img/icon-peru.png">
          <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
          <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+
          <link rel="stylesheet" href="<?php echo base_url()?>css/style-layout.css">
          <link rel="stylesheet" href="<?php echo base_url()?>css/style-buscapolitico.css">
+         <!--Iconos-->
+         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
      </head>
      <body>
          <script src="<?php echo base_url()?>js/libraries/jquery-3.3.1.min.js"></script>
@@ -34,6 +37,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </form>
                     </div>
                 </div>
+				<div class="row">
+					<div class="col-md-6">
+						<a href="<?php echo base_url()?>web" class="btn btn-dark">Proyectos de Ley</a>
+					</div>
+				</div>
             </div>
         </header>
         <div id="main-content">
@@ -61,6 +69,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
         </div>
+		<div class="modal" id="myModal" tabindex="-1" role="dialog">
+	  		<div class="modal-dialog" role="document">
+			</div>
+		</div>
      </body>
  </html>
  <script>
